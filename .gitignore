@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment secrets
+.env
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Large / generated data (regenerate via scripts/generate_data.py)
+data/synthetic/*.csv
+data/synthetic/splits/
+data/synthetic/analysis_report.json
+
+# Keep incident window ground-truth small file tracked if desired; comment
+# the line below back in if you'd rather regenerate it locally instead.
+# data/synthetic/incident_windows.json

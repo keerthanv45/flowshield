@@ -1,0 +1,10 @@
+# FlowShield — Phase 1 dependencies
+# Keep this list minimal and justified; Phase 2+ will add ML/LLM libraries
+# (e.g. scikit-learn, NVIDIA Nemotron client) when those phases start.
+
+pydantic>=2.6,<3.0
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.29,<1.0
+pandas>=2.2,<3.0
+pytest>=8.0,<9.0
+python-dotenv>=1.0,<2.0
