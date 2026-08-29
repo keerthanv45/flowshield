@@ -1,0 +1,3477 @@
+[
+  {
+    "incident_id": "inc_20260801T023000_ISOLATED_FAILURES",
+    "detected_at": "2026-08-01T02:30:00",
+    "window_start": "2026-08-01T02:30:00",
+    "window_end": "2026-08-01T03:15:00",
+    "severity": "WARNING",
+    "incident_type": "ISOLATED_FAILURES",
+    "anomaly_score": 0.8722461763514884,
+    "health_score": 66.5242268864759,
+    "affected_dimensions": [],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.6154 (baseline: 0.8940, delta: -0.2786)",
+      "Overall failure rate: 0.3846 (baseline: 0.1060)",
+      "Average latency: 3440.2 ms (baseline: 2305.7 ms, ratio: 1.49x)",
+      "Transaction volume: 13 (baseline: 15.3, ratio: 0.85x)",
+      "Anomaly score: 0.872 (is_anomaly=True)",
+      "Signal(s) fired without concentration in any single bank, payment method, or region \u2014 consistent with scattered, non-systemic failures"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 3
+  },
+  {
+    "incident_id": "inc_20260801T180000_ISOLATED_FAILURES",
+    "detected_at": "2026-08-01T18:00:00",
+    "window_start": "2026-08-01T18:00:00",
+    "window_end": "2026-08-01T18:30:00",
+    "severity": "WARNING",
+    "incident_type": "ISOLATED_FAILURES",
+    "anomaly_score": 0.715230984834076,
+    "health_score": 74.77613958109121,
+    "affected_dimensions": [],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.6923 (baseline: 0.9156, delta: -0.2233)",
+      "Overall failure rate: 0.3077 (baseline: 0.0844)",
+      "Average latency: 2257.5 ms (baseline: 2157.0 ms, ratio: 1.05x)",
+      "Transaction volume: 13 (baseline: 16.2, ratio: 0.80x)",
+      "Anomaly score: 0.715 (is_anomaly=True)",
+      "Signal(s) fired without concentration in any single bank, payment method, or region \u2014 consistent with scattered, non-systemic failures"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260802T003000_ISOLATED_FAILURES",
+    "detected_at": "2026-08-02T00:30:00",
+    "window_start": "2026-08-02T00:30:00",
+    "window_end": "2026-08-02T00:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "ISOLATED_FAILURES",
+    "anomaly_score": 0.9838397300418215,
+    "health_score": 61.541312956421145,
+    "affected_dimensions": [],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION",
+      "VOLUME_ANOMALY"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5714 (baseline: 0.8768, delta: -0.3053)",
+      "Overall failure rate: 0.4286 (baseline: 0.1232)",
+      "Average latency: 4319.2 ms (baseline: 2261.1 ms, ratio: 1.91x)",
+      "Transaction volume: 7 (baseline: 14.3, ratio: 0.49x)",
+      "Anomaly score: 0.984 (is_anomaly=True)",
+      "Signal(s) fired without concentration in any single bank, payment method, or region \u2014 consistent with scattered, non-systemic failures"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260803T020000_BANK_RAIL_DEGRADATION",
+    "detected_at": "2026-08-03T02:00:00",
+    "window_start": "2026-08-03T02:00:00",
+    "window_end": "2026-08-03T02:15:00",
+    "severity": "CRITICAL",
+    "incident_type": "BANK_RAIL_DEGRADATION",
+    "anomaly_score": 0.8276823999875302,
+    "health_score": 72.11773927807857,
+    "affected_dimensions": [
+      {
+        "bank": "HDFC",
+        "payment_method": "UPI"
+      }
+    ],
+    "signals": [
+      "BANK_CONCENTRATION",
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.6000 (baseline: 0.9075, delta: -0.3075)",
+      "Overall failure rate: 0.4000 (baseline: 0.0925)",
+      "Average latency: 2435.2 ms (baseline: 2312.6 ms, ratio: 1.05x)",
+      "Transaction volume: 15 (baseline: 14.8, ratio: 1.02x)",
+      "Anomaly score: 0.828 (is_anomaly=True)",
+      "Concentrated degradation detected in HDFC + UPI, while other banks/methods remained near baseline"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260803T044500_BANK_RAIL_DEGRADATION",
+    "detected_at": "2026-08-03T04:45:00",
+    "window_start": "2026-08-03T04:45:00",
+    "window_end": "2026-08-03T05:15:00",
+    "severity": "WARNING",
+    "incident_type": "BANK_RAIL_DEGRADATION",
+    "anomaly_score": 0.5618125203318446,
+    "health_score": 89.0846664204273,
+    "affected_dimensions": [
+      {
+        "bank": "HDFC",
+        "payment_method": "UPI"
+      }
+    ],
+    "signals": [
+      "BANK_CONCENTRATION",
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION",
+      "VOLUME_ANOMALY"
+    ],
+    "evidence": [
+      "Overall success rate: 0.8621 (baseline: 0.8592, delta: +0.0029)",
+      "Overall failure rate: 0.1379 (baseline: 0.1408)",
+      "Average latency: 3201.9 ms (baseline: 2189.9 ms, ratio: 1.46x)",
+      "Transaction volume: 29 (baseline: 14.4, ratio: 2.01x)",
+      "Anomaly score: 0.562 (is_anomaly=True)",
+      "Concentrated degradation detected in HDFC + UPI, while other banks/methods remained near baseline"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260803T080000_BANK_RAIL_DEGRADATION",
+    "detected_at": "2026-08-03T08:00:00",
+    "window_start": "2026-08-03T08:00:00",
+    "window_end": "2026-08-03T08:30:00",
+    "severity": "WARNING",
+    "incident_type": "BANK_RAIL_DEGRADATION",
+    "anomaly_score": 0.7969537505382888,
+    "health_score": 68.6480727130847,
+    "affected_dimensions": [
+      {
+        "bank": "HDFC",
+        "payment_method": "UPI"
+      }
+    ],
+    "signals": [
+      "BANK_CONCENTRATION",
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION",
+      "VOLUME_ANOMALY"
+    ],
+    "evidence": [
+      "Overall success rate: 0.6667 (baseline: 0.8936, delta: -0.2270)",
+      "Overall failure rate: 0.3333 (baseline: 0.1064)",
+      "Average latency: 3327.6 ms (baseline: 2283.3 ms, ratio: 1.46x)",
+      "Transaction volume: 6 (baseline: 13.8, ratio: 0.44x)",
+      "Anomaly score: 0.797 (is_anomaly=True)",
+      "Concentrated degradation detected in HDFC + UPI, while other banks/methods remained near baseline"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260803T091500_BANK_RAIL_DEGRADATION",
+    "detected_at": "2026-08-03T09:15:00",
+    "window_start": "2026-08-03T09:15:00",
+    "window_end": "2026-08-03T09:45:00",
+    "severity": "WARNING",
+    "incident_type": "BANK_RAIL_DEGRADATION",
+    "anomaly_score": 0.9188890588370865,
+    "health_score": 58.35342346165166,
+    "affected_dimensions": [
+      {
+        "bank": "HDFC",
+        "payment_method": "UPI"
+      }
+    ],
+    "signals": [
+      "BANK_CONCENTRATION",
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION",
+      "VOLUME_ANOMALY"
+    ],
+    "evidence": [
+      "Overall success rate: 0.6667 (baseline: 0.9107, delta: -0.2440)",
+      "Overall failure rate: 0.3333 (baseline: 0.0893)",
+      "Average latency: 1764.1 ms (baseline: 2306.0 ms, ratio: 0.76x)",
+      "Transaction volume: 3 (baseline: 14.2, ratio: 0.21x)",
+      "Anomaly score: 0.919 (is_anomaly=True)",
+      "Concentrated degradation detected in HDFC + UPI, while other banks/methods remained near baseline"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260803T131500_ISOLATED_FAILURES",
+    "detected_at": "2026-08-03T13:15:00",
+    "window_start": "2026-08-03T13:15:00",
+    "window_end": "2026-08-03T13:45:00",
+    "severity": "WARNING",
+    "incident_type": "ISOLATED_FAILURES",
+    "anomaly_score": 0.6231767800283613,
+    "health_score": 87.19572839485777,
+    "affected_dimensions": [],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.6154 (baseline: 0.9051, delta: -0.2897)",
+      "Overall failure rate: 0.3846 (baseline: 0.0949)",
+      "Average latency: 1981.7 ms (baseline: 2244.4 ms, ratio: 0.88x)",
+      "Transaction volume: 13 (baseline: 14.8, ratio: 0.88x)",
+      "Anomaly score: 0.623 (is_anomaly=True)",
+      "Signal(s) fired without concentration in any single bank, payment method, or region \u2014 consistent with scattered, non-systemic failures"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260803T184500_BANK_RAIL_DEGRADATION",
+    "detected_at": "2026-08-03T18:45:00",
+    "window_start": "2026-08-03T18:45:00",
+    "window_end": "2026-08-03T19:15:00",
+    "severity": "WARNING",
+    "incident_type": "BANK_RAIL_DEGRADATION",
+    "anomaly_score": 0.5225701479569798,
+    "health_score": 88.04232001160385,
+    "affected_dimensions": [
+      {
+        "bank": "HDFC",
+        "payment_method": "UPI"
+      }
+    ],
+    "signals": [
+      "BANK_CONCENTRATION",
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.7000 (baseline: 0.9156, delta: -0.2156)",
+      "Overall failure rate: 0.3000 (baseline: 0.0844)",
+      "Average latency: 2100.6 ms (baseline: 2157.0 ms, ratio: 0.97x)",
+      "Transaction volume: 10 (baseline: 16.2, ratio: 0.62x)",
+      "Anomaly score: 0.523 (is_anomaly=True)",
+      "Concentrated degradation detected in HDFC + UPI, while other banks/methods remained near baseline"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260804T114500_ISOLATED_FAILURES",
+    "detected_at": "2026-08-04T11:45:00",
+    "window_start": "2026-08-04T11:45:00",
+    "window_end": "2026-08-04T12:15:00",
+    "severity": "WARNING",
+    "incident_type": "ISOLATED_FAILURES",
+    "anomaly_score": 0.610261644975879,
+    "health_score": 84.33618260271496,
+    "affected_dimensions": [],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.7500 (baseline: 0.8874, delta: -0.1374)",
+      "Overall failure rate: 0.2500 (baseline: 0.1126)",
+      "Average latency: 1818.8 ms (baseline: 2342.1 ms, ratio: 0.78x)",
+      "Transaction volume: 8 (baseline: 14.9, ratio: 0.54x)",
+      "Anomaly score: 0.610 (is_anomaly=True)",
+      "Signal(s) fired without concentration in any single bank, payment method, or region \u2014 consistent with scattered, non-systemic failures"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260804T164500_ISOLATED_FAILURES",
+    "detected_at": "2026-08-04T16:45:00",
+    "window_start": "2026-08-04T16:45:00",
+    "window_end": "2026-08-04T17:00:00",
+    "severity": "CRITICAL",
+    "incident_type": "ISOLATED_FAILURES",
+    "anomaly_score": 1.0,
+    "health_score": 62.715801503693534,
+    "affected_dimensions": [],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5556 (baseline: 0.8752, delta: -0.3197)",
+      "Overall failure rate: 0.4444 (baseline: 0.1248)",
+      "Average latency: 3301.6 ms (baseline: 2445.7 ms, ratio: 1.35x)",
+      "Transaction volume: 9 (baseline: 14.4, ratio: 0.62x)",
+      "Anomaly score: 1.000 (is_anomaly=True)",
+      "Signal(s) fired without concentration in any single bank, payment method, or region \u2014 consistent with scattered, non-systemic failures"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260805T003000_REGIONAL_DEGRADATION",
+    "detected_at": "2026-08-05T00:30:00",
+    "window_start": "2026-08-05T00:30:00",
+    "window_end": "2026-08-05T01:00:00",
+    "severity": "CRITICAL",
+    "incident_type": "REGIONAL_DEGRADATION",
+    "anomaly_score": 0.8572461391948668,
+    "health_score": 65.25283984129334,
+    "affected_dimensions": [
+      {
+        "region": "KA"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "REGIONAL_CONCENTRATION",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5714 (baseline: 0.8768, delta: -0.3053)",
+      "Overall failure rate: 0.4286 (baseline: 0.1232)",
+      "Average latency: 3571.9 ms (baseline: 2261.1 ms, ratio: 1.58x)",
+      "Transaction volume: 14 (baseline: 14.3, ratio: 0.98x)",
+      "Anomaly score: 0.857 (is_anomaly=True)",
+      "Region KA shows degradation across multiple banks/payment methods, while other regions remained near baseline"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260805T073000_REGIONAL_DEGRADATION",
+    "detected_at": "2026-08-05T07:30:00",
+    "window_start": "2026-08-05T07:30:00",
+    "window_end": "2026-08-05T08:00:00",
+    "severity": "WARNING",
+    "incident_type": "REGIONAL_DEGRADATION",
+    "anomaly_score": 0.6903955039652685,
+    "health_score": 76.4977501461282,
+    "affected_dimensions": [
+      {
+        "region": "KA"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "REGIONAL_CONCENTRATION",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.6471 (baseline: 0.8900, delta: -0.2429)",
+      "Overall failure rate: 0.3529 (baseline: 0.1100)",
+      "Average latency: 2640.8 ms (baseline: 2310.2 ms, ratio: 1.14x)",
+      "Transaction volume: 17 (baseline: 15.8, ratio: 1.08x)",
+      "Anomaly score: 0.690 (is_anomaly=True)",
+      "Region KA shows degradation across multiple banks/payment methods, while other regions remained near baseline"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260805T081500_REGIONAL_DEGRADATION",
+    "detected_at": "2026-08-05T08:15:00",
+    "window_start": "2026-08-05T08:15:00",
+    "window_end": "2026-08-05T09:00:00",
+    "severity": "WARNING",
+    "incident_type": "REGIONAL_DEGRADATION",
+    "anomaly_score": 0.7955941502091538,
+    "health_score": 71.76991029572451,
+    "affected_dimensions": [
+      {
+        "region": "KA"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "REGIONAL_CONCENTRATION",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.6923 (baseline: 0.8936, delta: -0.2013)",
+      "Overall failure rate: 0.3077 (baseline: 0.1064)",
+      "Average latency: 3954.9 ms (baseline: 2283.3 ms, ratio: 1.73x)",
+      "Transaction volume: 13 (baseline: 13.8, ratio: 0.95x)",
+      "Anomaly score: 0.796 (is_anomaly=True)",
+      "Region KA shows degradation across multiple banks/payment methods, while other regions remained near baseline"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 3
+  },
+  {
+    "incident_id": "inc_20260805T140000_BANK_RAIL_DEGRADATION",
+    "detected_at": "2026-08-05T14:00:00",
+    "window_start": "2026-08-05T14:00:00",
+    "window_end": "2026-08-05T14:15:00",
+    "severity": "CRITICAL",
+    "incident_type": "BANK_RAIL_DEGRADATION",
+    "anomaly_score": 0.8087456743656319,
+    "health_score": 63.684318104558265,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS",
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "BANK_CONCENTRATION",
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.4286 (baseline: 0.8940, delta: -0.4655)",
+      "Overall failure rate: 0.5714 (baseline: 0.1060)",
+      "Average latency: 2950.3 ms (baseline: 2255.1 ms, ratio: 1.31x)",
+      "Transaction volume: 14 (baseline: 16.6, ratio: 0.84x)",
+      "Anomaly score: 0.809 (is_anomaly=True)",
+      "Concentrated degradation detected in AXIS + WALLET, while other banks/methods remained near baseline"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260805T221500_BANK_RAIL_DEGRADATION",
+    "detected_at": "2026-08-05T22:15:00",
+    "window_start": "2026-08-05T22:15:00",
+    "window_end": "2026-08-05T22:45:00",
+    "severity": "WARNING",
+    "incident_type": "BANK_RAIL_DEGRADATION",
+    "anomaly_score": 0.5609227241806364,
+    "health_score": 78.64188819811994,
+    "affected_dimensions": [
+      {
+        "bank": "ICICI",
+        "payment_method": "UPI"
+      },
+      {
+        "bank": "SBI",
+        "payment_method": "CARD"
+      }
+    ],
+    "signals": [
+      "BANK_CONCENTRATION",
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.7778 (baseline: 0.8832, delta: -0.1054)",
+      "Overall failure rate: 0.2222 (baseline: 0.1168)",
+      "Average latency: 3846.8 ms (baseline: 2276.7 ms, ratio: 1.69x)",
+      "Transaction volume: 9 (baseline: 16.3, ratio: 0.55x)",
+      "Anomaly score: 0.561 (is_anomaly=True)",
+      "Concentrated degradation detected in ICICI + UPI, while other banks/methods remained near baseline",
+      "Concentrated degradation detected in SBI + CARD, while other banks/methods remained near baseline"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260806T081500_REGIONAL_DEGRADATION",
+    "detected_at": "2026-08-06T08:15:00",
+    "window_start": "2026-08-06T08:15:00",
+    "window_end": "2026-08-06T08:30:00",
+    "severity": "CRITICAL",
+    "incident_type": "REGIONAL_DEGRADATION",
+    "anomaly_score": 0.952314800352679,
+    "health_score": 62.79984033837605,
+    "affected_dimensions": [
+      {
+        "region": "KA"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "REGIONAL_CONCENTRATION",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5714 (baseline: 0.8936, delta: -0.3222)",
+      "Overall failure rate: 0.4286 (baseline: 0.1064)",
+      "Average latency: 3828.1 ms (baseline: 2283.3 ms, ratio: 1.68x)",
+      "Transaction volume: 14 (baseline: 13.8, ratio: 1.02x)",
+      "Anomaly score: 0.952 (is_anomaly=True)",
+      "Region KA shows degradation across multiple banks/payment methods, while other regions remained near baseline"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260807T000000_LATENCY_SPIKE",
+    "detected_at": "2026-08-07T00:00:00",
+    "window_start": "2026-08-07T00:00:00",
+    "window_end": "2026-08-08T00:00:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 1.1192840849320111,
+    "health_score": 30.207357816437128,
+    "affected_dimensions": [
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "CARD"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION",
+      "VOLUME_ANOMALY"
+    ],
+    "evidence": [
+      "Overall success rate: 0.3333 (baseline: 0.8768, delta: -0.5434)",
+      "Overall failure rate: 0.6667 (baseline: 0.1232)",
+      "Average latency: 11222.1 ms (baseline: 2261.1 ms, ratio: 4.96x)",
+      "Transaction volume: 12 (baseline: 14.3, ratio: 0.84x)",
+      "Anomaly score: 1.017 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 96
+  },
+  {
+    "incident_id": "inc_20260808T121500_LATENCY_SPIKE",
+    "detected_at": "2026-08-08T12:15:00",
+    "window_start": "2026-08-08T12:15:00",
+    "window_end": "2026-08-08T12:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 0.935471952255721,
+    "health_score": 59.44059527384398,
+    "affected_dimensions": [
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5000 (baseline: 0.8719, delta: -0.3719)",
+      "Overall failure rate: 0.5000 (baseline: 0.1281)",
+      "Average latency: 3592.8 ms (baseline: 2307.1 ms, ratio: 1.56x)",
+      "Transaction volume: 12 (baseline: 14.1, ratio: 0.85x)",
+      "Anomaly score: 0.935 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260808T124500_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-08T12:45:00",
+    "window_start": "2026-08-08T12:45:00",
+    "window_end": "2026-08-08T14:15:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.9103941158035425,
+    "health_score": 56.970875067563526,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION",
+      "VOLUME_ANOMALY"
+    ],
+    "evidence": [
+      "Overall success rate: 0.3333 (baseline: 0.8940, delta: -0.5607)",
+      "Overall failure rate: 0.6667 (baseline: 0.1060)",
+      "Average latency: 3244.2 ms (baseline: 2255.1 ms, ratio: 1.44x)",
+      "Transaction volume: 18 (baseline: 16.6, ratio: 1.08x)",
+      "Anomaly score: 0.865 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 6
+  },
+  {
+    "incident_id": "inc_20260808T141500_LATENCY_SPIKE",
+    "detected_at": "2026-08-08T14:15:00",
+    "window_start": "2026-08-08T14:15:00",
+    "window_end": "2026-08-08T15:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 1.0845069069466948,
+    "health_score": 44.00224651847551,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.4444 (baseline: 0.8940, delta: -0.4496)",
+      "Overall failure rate: 0.5556 (baseline: 0.1060)",
+      "Average latency: 4257.4 ms (baseline: 2255.1 ms, ratio: 1.89x)",
+      "Transaction volume: 9 (baseline: 16.6, ratio: 0.54x)",
+      "Anomaly score: 1.085 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 6
+  },
+  {
+    "incident_id": "inc_20260808T154500_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-08T15:45:00",
+    "window_start": "2026-08-08T15:45:00",
+    "window_end": "2026-08-08T16:30:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.9681947175873259,
+    "health_score": 63.771378469020405,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.4000 (baseline: 0.8752, delta: -0.4752)",
+      "Overall failure rate: 0.6000 (baseline: 0.1248)",
+      "Average latency: 3218.2 ms (baseline: 2445.7 ms, ratio: 1.32x)",
+      "Transaction volume: 20 (baseline: 14.4, ratio: 1.38x)",
+      "Anomaly score: 0.930 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 3
+  },
+  {
+    "incident_id": "inc_20260808T163000_LATENCY_SPIKE",
+    "detected_at": "2026-08-08T16:30:00",
+    "window_start": "2026-08-08T16:30:00",
+    "window_end": "2026-08-08T17:30:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 1.0763309660347908,
+    "health_score": 46.07230604645777,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.4444 (baseline: 0.8672, delta: -0.4227)",
+      "Overall failure rate: 0.5556 (baseline: 0.1328)",
+      "Average latency: 4596.8 ms (baseline: 2241.3 ms, ratio: 2.05x)",
+      "Transaction volume: 9 (baseline: 13.7, ratio: 0.66x)",
+      "Anomaly score: 1.076 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 4
+  },
+  {
+    "incident_id": "inc_20260808T173000_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-08T17:30:00",
+    "window_start": "2026-08-08T17:30:00",
+    "window_end": "2026-08-08T17:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.7983546901868949,
+    "health_score": 70.13205823464526,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5385 (baseline: 0.8672, delta: -0.3287)",
+      "Overall failure rate: 0.4615 (baseline: 0.1328)",
+      "Average latency: 2913.4 ms (baseline: 2241.3 ms, ratio: 1.30x)",
+      "Transaction volume: 13 (baseline: 13.7, ratio: 0.95x)",
+      "Anomaly score: 0.798 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260808T174500_LATENCY_SPIKE",
+    "detected_at": "2026-08-08T17:45:00",
+    "window_start": "2026-08-08T17:45:00",
+    "window_end": "2026-08-08T18:00:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 0.9544892885650882,
+    "health_score": 55.768258165908236,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.4444 (baseline: 0.8672, delta: -0.4227)",
+      "Overall failure rate: 0.5556 (baseline: 0.1328)",
+      "Average latency: 4149.4 ms (baseline: 2241.3 ms, ratio: 1.85x)",
+      "Transaction volume: 18 (baseline: 13.7, ratio: 1.31x)",
+      "Anomaly score: 0.954 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260808T180000_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-08T18:00:00",
+    "window_start": "2026-08-08T18:00:00",
+    "window_end": "2026-08-08T18:15:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.7851352950677362,
+    "health_score": 74.0429393051636,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.6154 (baseline: 0.9156, delta: -0.3002)",
+      "Overall failure rate: 0.3846 (baseline: 0.0844)",
+      "Average latency: 2991.4 ms (baseline: 2157.0 ms, ratio: 1.39x)",
+      "Transaction volume: 13 (baseline: 16.2, ratio: 0.80x)",
+      "Anomaly score: 0.785 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260808T181500_LATENCY_SPIKE",
+    "detected_at": "2026-08-08T18:15:00",
+    "window_start": "2026-08-08T18:15:00",
+    "window_end": "2026-08-08T18:30:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 0.943976046270402,
+    "health_score": 46.669008214520105,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.3125 (baseline: 0.9156, delta: -0.6031)",
+      "Overall failure rate: 0.6875 (baseline: 0.0844)",
+      "Average latency: 4290.3 ms (baseline: 2157.0 ms, ratio: 1.99x)",
+      "Transaction volume: 16 (baseline: 16.2, ratio: 0.98x)",
+      "Anomaly score: 0.944 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260808T183000_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-08T18:30:00",
+    "window_start": "2026-08-08T18:30:00",
+    "window_end": "2026-08-08T18:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.7998329886090255,
+    "health_score": 64.03583770138391,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5000 (baseline: 0.9156, delta: -0.4156)",
+      "Overall failure rate: 0.5000 (baseline: 0.0844)",
+      "Average latency: 3180.9 ms (baseline: 2157.0 ms, ratio: 1.47x)",
+      "Transaction volume: 14 (baseline: 16.2, ratio: 0.86x)",
+      "Anomaly score: 0.800 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260808T184500_LATENCY_SPIKE",
+    "detected_at": "2026-08-08T18:45:00",
+    "window_start": "2026-08-08T18:45:00",
+    "window_end": "2026-08-08T19:15:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 1.0193590417741845,
+    "health_score": 41.59979381330935,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.3571 (baseline: 0.9156, delta: -0.5585)",
+      "Overall failure rate: 0.6429 (baseline: 0.0844)",
+      "Average latency: 4573.4 ms (baseline: 2157.0 ms, ratio: 2.12x)",
+      "Transaction volume: 14 (baseline: 16.2, ratio: 0.86x)",
+      "Anomaly score: 1.019 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260808T191500_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-08T19:15:00",
+    "window_start": "2026-08-08T19:15:00",
+    "window_end": "2026-08-08T19:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.8224029411068712,
+    "health_score": 71.09717071631823,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5625 (baseline: 0.9029, delta: -0.3404)",
+      "Overall failure rate: 0.4375 (baseline: 0.0971)",
+      "Average latency: 3259.2 ms (baseline: 2454.9 ms, ratio: 1.33x)",
+      "Transaction volume: 16 (baseline: 13.2, ratio: 1.21x)",
+      "Anomaly score: 0.822 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260808T200000_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-08T20:00:00",
+    "window_start": "2026-08-08T20:00:00",
+    "window_end": "2026-08-08T20:30:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.9220635291243914,
+    "health_score": 59.228401994945294,
+    "affected_dimensions": [
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.4667 (baseline: 0.8876, delta: -0.4209)",
+      "Overall failure rate: 0.5333 (baseline: 0.1124)",
+      "Average latency: 3037.6 ms (baseline: 2264.9 ms, ratio: 1.34x)",
+      "Transaction volume: 15 (baseline: 12.8, ratio: 1.17x)",
+      "Anomaly score: 0.922 (is_anomaly=True)",
+      "Degradation spread across banks: HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260808T203000_LATENCY_SPIKE",
+    "detected_at": "2026-08-08T20:30:00",
+    "window_start": "2026-08-08T20:30:00",
+    "window_end": "2026-08-08T20:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 0.9588805888485396,
+    "health_score": 61.34154911628409,
+    "affected_dimensions": [
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5455 (baseline: 0.8876, delta: -0.3421)",
+      "Overall failure rate: 0.4545 (baseline: 0.1124)",
+      "Average latency: 3996.2 ms (baseline: 2264.9 ms, ratio: 1.76x)",
+      "Transaction volume: 11 (baseline: 12.8, ratio: 0.86x)",
+      "Anomaly score: 0.959 (is_anomaly=True)",
+      "Degradation spread across banks: HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260808T204500_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-08T20:45:00",
+    "window_start": "2026-08-08T20:45:00",
+    "window_end": "2026-08-08T22:00:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.958930872872283,
+    "health_score": 57.19617375452091,
+    "affected_dimensions": [
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.4167 (baseline: 0.8929, delta: -0.4762)",
+      "Overall failure rate: 0.5833 (baseline: 0.1071)",
+      "Average latency: 2803.5 ms (baseline: 2508.5 ms, ratio: 1.12x)",
+      "Transaction volume: 12 (baseline: 13.6, ratio: 0.88x)",
+      "Anomaly score: 0.958 (is_anomaly=True)",
+      "Degradation spread across banks: HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 5
+  },
+  {
+    "incident_id": "inc_20260808T220000_LATENCY_SPIKE",
+    "detected_at": "2026-08-08T22:00:00",
+    "window_start": "2026-08-08T22:00:00",
+    "window_end": "2026-08-08T22:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 0.9787669144011408,
+    "health_score": 52.5697912127781,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.4000 (baseline: 0.8832, delta: -0.4832)",
+      "Overall failure rate: 0.6000 (baseline: 0.1168)",
+      "Average latency: 3995.9 ms (baseline: 2276.7 ms, ratio: 1.76x)",
+      "Transaction volume: 20 (baseline: 16.3, ratio: 1.23x)",
+      "Anomaly score: 0.979 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, SBI",
+      "Degradation spread across payment methods: CARD, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 3
+  },
+  {
+    "incident_id": "inc_20260808T224500_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-08T22:45:00",
+    "window_start": "2026-08-08T22:45:00",
+    "window_end": "2026-08-09T00:15:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.9688998422284103,
+    "health_score": 58.76481115225731,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.4000 (baseline: 0.8657, delta: -0.4657)",
+      "Overall failure rate: 0.6000 (baseline: 0.1343)",
+      "Average latency: 3251.5 ms (baseline: 2206.6 ms, ratio: 1.47x)",
+      "Transaction volume: 15 (baseline: 16.4, ratio: 0.92x)",
+      "Anomaly score: 0.874 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, SBI",
+      "Degradation spread across payment methods: CARD, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 6
+  },
+  {
+    "incident_id": "inc_20260809T001500_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T00:15:00",
+    "window_start": "2026-08-09T00:15:00",
+    "window_end": "2026-08-09T00:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 0.9620790612550063,
+    "health_score": 50.961120503518245,
+    "affected_dimensions": [
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.4118 (baseline: 0.8768, delta: -0.4650)",
+      "Overall failure rate: 0.5882 (baseline: 0.1232)",
+      "Average latency: 3676.5 ms (baseline: 2261.1 ms, ratio: 1.63x)",
+      "Transaction volume: 17 (baseline: 14.3, ratio: 1.18x)",
+      "Anomaly score: 0.962 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260809T004500_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T00:45:00",
+    "window_start": "2026-08-09T00:45:00",
+    "window_end": "2026-08-09T01:15:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.9466005358121423,
+    "health_score": 60.3764988877893,
+    "affected_dimensions": [
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.4000 (baseline: 0.8514, delta: -0.4514)",
+      "Overall failure rate: 0.6000 (baseline: 0.1486)",
+      "Average latency: 3279.1 ms (baseline: 2230.6 ms, ratio: 1.47x)",
+      "Transaction volume: 20 (baseline: 14.8, ratio: 1.35x)",
+      "Anomaly score: 0.947 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260809T011500_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T01:15:00",
+    "window_start": "2026-08-09T01:15:00",
+    "window_end": "2026-08-09T03:15:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 1.1168040914076258,
+    "health_score": 40.40784342491044,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.3333 (baseline: 0.9075, delta: -0.5742)",
+      "Overall failure rate: 0.6667 (baseline: 0.0925)",
+      "Average latency: 4955.4 ms (baseline: 2312.6 ms, ratio: 2.14x)",
+      "Transaction volume: 12 (baseline: 14.8, ratio: 0.81x)",
+      "Anomaly score: 1.070 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 8
+  },
+  {
+    "incident_id": "inc_20260809T031500_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T03:15:00",
+    "window_start": "2026-08-09T03:15:00",
+    "window_end": "2026-08-09T03:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 1.017493308445261,
+    "health_score": 58.800864139575076,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5000 (baseline: 0.8940, delta: -0.3940)",
+      "Overall failure rate: 0.5000 (baseline: 0.1060)",
+      "Average latency: 2695.8 ms (baseline: 2305.7 ms, ratio: 1.17x)",
+      "Transaction volume: 10 (baseline: 15.3, ratio: 0.65x)",
+      "Anomaly score: 1.017 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260809T034500_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T03:45:00",
+    "window_start": "2026-08-09T03:45:00",
+    "window_end": "2026-08-09T05:30:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 0.944342674593951,
+    "health_score": 58.658067643518685,
+    "affected_dimensions": [
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "UPI"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5714 (baseline: 0.9150, delta: -0.3435)",
+      "Overall failure rate: 0.4286 (baseline: 0.0850)",
+      "Average latency: 4339.0 ms (baseline: 2302.5 ms, ratio: 1.88x)",
+      "Transaction volume: 14 (baseline: 16.4, ratio: 0.85x)",
+      "Anomaly score: 0.922 (is_anomaly=True)",
+      "Degradation spread across banks: HDFC, ICICI, SBI",
+      "Degradation spread across payment methods: CARD, UPI"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 7
+  },
+  {
+    "incident_id": "inc_20260809T053000_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T05:30:00",
+    "window_start": "2026-08-09T05:30:00",
+    "window_end": "2026-08-09T06:00:00",
+    "severity": "WARNING",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.8695010679010992,
+    "health_score": 68.00602825147982,
+    "affected_dimensions": [
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "UPI"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.6667 (baseline: 0.9150, delta: -0.2483)",
+      "Overall failure rate: 0.3333 (baseline: 0.0850)",
+      "Average latency: 2273.2 ms (baseline: 2302.5 ms, ratio: 0.99x)",
+      "Transaction volume: 9 (baseline: 16.4, ratio: 0.55x)",
+      "Anomaly score: 0.870 (is_anomaly=True)",
+      "Degradation spread across banks: HDFC, ICICI, SBI",
+      "Degradation spread across payment methods: CARD, UPI"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260809T061500_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T06:15:00",
+    "window_start": "2026-08-09T06:15:00",
+    "window_end": "2026-08-09T06:45:00",
+    "severity": "WARNING",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.6256422895591691,
+    "health_score": 80.90349091970528,
+    "affected_dimensions": [
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.6429 (baseline: 0.9045, delta: -0.2616)",
+      "Overall failure rate: 0.3571 (baseline: 0.0955)",
+      "Average latency: 2941.8 ms (baseline: 2223.7 ms, ratio: 1.32x)",
+      "Transaction volume: 14 (baseline: 13.9, ratio: 1.00x)",
+      "Anomaly score: 0.626 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, KOTAK, SBI",
+      "Degradation spread across payment methods: UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260809T064500_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T06:45:00",
+    "window_start": "2026-08-09T06:45:00",
+    "window_end": "2026-08-09T07:15:00",
+    "severity": "WARNING",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 0.828007704379041,
+    "health_score": 71.16645488185414,
+    "affected_dimensions": [
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.7059 (baseline: 0.9045, delta: -0.1986)",
+      "Overall failure rate: 0.2941 (baseline: 0.0955)",
+      "Average latency: 3906.0 ms (baseline: 2223.7 ms, ratio: 1.76x)",
+      "Transaction volume: 17 (baseline: 13.9, ratio: 1.22x)",
+      "Anomaly score: 0.828 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, KOTAK, SBI",
+      "Degradation spread across payment methods: UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260809T073000_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T07:30:00",
+    "window_start": "2026-08-09T07:30:00",
+    "window_end": "2026-08-09T08:15:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 0.966239469021442,
+    "health_score": 55.317418493201345,
+    "affected_dimensions": [
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.3889 (baseline: 0.8900, delta: -0.5011)",
+      "Overall failure rate: 0.6111 (baseline: 0.1100)",
+      "Average latency: 4161.0 ms (baseline: 2310.2 ms, ratio: 1.80x)",
+      "Transaction volume: 18 (baseline: 15.8, ratio: 1.14x)",
+      "Anomaly score: 0.929 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, KOTAK, SBI",
+      "Degradation spread across payment methods: UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 3
+  },
+  {
+    "incident_id": "inc_20260809T081500_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T08:15:00",
+    "window_start": "2026-08-09T08:15:00",
+    "window_end": "2026-08-09T08:30:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.7663276197568378,
+    "health_score": 70.46361035302527,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.4667 (baseline: 0.8936, delta: -0.4270)",
+      "Overall failure rate: 0.5333 (baseline: 0.1064)",
+      "Average latency: 2887.6 ms (baseline: 2283.3 ms, ratio: 1.26x)",
+      "Transaction volume: 15 (baseline: 13.8, ratio: 1.09x)",
+      "Anomaly score: 0.766 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260809T083000_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T08:30:00",
+    "window_start": "2026-08-09T08:30:00",
+    "window_end": "2026-08-09T09:15:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 1.0132532269189838,
+    "health_score": 37.78180448751889,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.2222 (baseline: 0.8936, delta: -0.6714)",
+      "Overall failure rate: 0.7778 (baseline: 0.1064)",
+      "Average latency: 4256.3 ms (baseline: 2283.3 ms, ratio: 1.86x)",
+      "Transaction volume: 9 (baseline: 13.8, ratio: 0.65x)",
+      "Anomaly score: 1.013 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 3
+  },
+  {
+    "incident_id": "inc_20260809T091500_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T09:15:00",
+    "window_start": "2026-08-09T09:15:00",
+    "window_end": "2026-08-09T09:30:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.9138792099260344,
+    "health_score": 61.18540102972762,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.4667 (baseline: 0.9107, delta: -0.4440)",
+      "Overall failure rate: 0.5333 (baseline: 0.0893)",
+      "Average latency: 3138.4 ms (baseline: 2306.0 ms, ratio: 1.36x)",
+      "Transaction volume: 15 (baseline: 14.2, ratio: 1.06x)",
+      "Anomaly score: 0.914 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260809T093000_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T09:30:00",
+    "window_start": "2026-08-09T09:30:00",
+    "window_end": "2026-08-09T09:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 0.928549438244667,
+    "health_score": 60.106656335298325,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5833 (baseline: 0.9107, delta: -0.3273)",
+      "Overall failure rate: 0.4167 (baseline: 0.0893)",
+      "Average latency: 3792.4 ms (baseline: 2306.0 ms, ratio: 1.64x)",
+      "Transaction volume: 12 (baseline: 14.2, ratio: 0.85x)",
+      "Anomaly score: 0.929 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260809T094500_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T09:45:00",
+    "window_start": "2026-08-09T09:45:00",
+    "window_end": "2026-08-09T10:00:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.7508229215953255,
+    "health_score": 76.6132236814762,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.6000 (baseline: 0.9107, delta: -0.3107)",
+      "Overall failure rate: 0.4000 (baseline: 0.0893)",
+      "Average latency: 2829.4 ms (baseline: 2306.0 ms, ratio: 1.23x)",
+      "Transaction volume: 15 (baseline: 14.2, ratio: 1.06x)",
+      "Anomaly score: 0.751 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260809T100000_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T10:00:00",
+    "window_start": "2026-08-09T10:00:00",
+    "window_end": "2026-08-09T10:15:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 0.9463222303360729,
+    "health_score": 57.74044912154125,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.4706 (baseline: 0.9117, delta: -0.4411)",
+      "Overall failure rate: 0.5294 (baseline: 0.0883)",
+      "Average latency: 4139.4 ms (baseline: 2316.6 ms, ratio: 1.79x)",
+      "Transaction volume: 17 (baseline: 15.2, ratio: 1.11x)",
+      "Anomaly score: 0.946 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260809T104500_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T10:45:00",
+    "window_start": "2026-08-09T10:45:00",
+    "window_end": "2026-08-09T11:30:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.8549176123728213,
+    "health_score": 69.7665477187228,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5294 (baseline: 0.8874, delta: -0.3580)",
+      "Overall failure rate: 0.4706 (baseline: 0.1126)",
+      "Average latency: 2747.9 ms (baseline: 2342.1 ms, ratio: 1.17x)",
+      "Transaction volume: 17 (baseline: 14.9, ratio: 1.14x)",
+      "Anomaly score: 0.855 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 3
+  },
+  {
+    "incident_id": "inc_20260809T114500_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T11:45:00",
+    "window_start": "2026-08-09T11:45:00",
+    "window_end": "2026-08-09T12:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 1.0674338438529571,
+    "health_score": 41.92384624260866,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.3571 (baseline: 0.8719, delta: -0.5148)",
+      "Overall failure rate: 0.6429 (baseline: 0.1281)",
+      "Average latency: 4975.9 ms (baseline: 2307.1 ms, ratio: 2.16x)",
+      "Transaction volume: 14 (baseline: 14.1, ratio: 0.99x)",
+      "Anomaly score: 1.056 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 4
+  },
+  {
+    "incident_id": "inc_20260809T124500_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T12:45:00",
+    "window_start": "2026-08-09T12:45:00",
+    "window_end": "2026-08-09T13:30:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.9730721807259727,
+    "health_score": 60.298761709912114,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5000 (baseline: 0.9051, delta: -0.4051)",
+      "Overall failure rate: 0.5000 (baseline: 0.0949)",
+      "Average latency: 2925.4 ms (baseline: 2244.4 ms, ratio: 1.30x)",
+      "Transaction volume: 12 (baseline: 14.8, ratio: 0.81x)",
+      "Anomaly score: 0.973 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 3
+  },
+  {
+    "incident_id": "inc_20260809T133000_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T13:30:00",
+    "window_start": "2026-08-09T13:30:00",
+    "window_end": "2026-08-09T13:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 1.0666888305226836,
+    "health_score": 42.77980734756247,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.3571 (baseline: 0.9051, delta: -0.5480)",
+      "Overall failure rate: 0.6429 (baseline: 0.0949)",
+      "Average latency: 4579.3 ms (baseline: 2244.4 ms, ratio: 2.04x)",
+      "Transaction volume: 14 (baseline: 14.8, ratio: 0.95x)",
+      "Anomaly score: 1.067 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260809T140000_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T14:00:00",
+    "window_start": "2026-08-09T14:00:00",
+    "window_end": "2026-08-09T15:15:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 1.0352385116232437,
+    "health_score": 50.907706232515345,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.3889 (baseline: 0.8940, delta: -0.5052)",
+      "Overall failure rate: 0.6111 (baseline: 0.1060)",
+      "Average latency: 4272.7 ms (baseline: 2255.1 ms, ratio: 1.89x)",
+      "Transaction volume: 18 (baseline: 16.6, ratio: 1.08x)",
+      "Anomaly score: 1.035 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 5
+  },
+  {
+    "incident_id": "inc_20260809T151500_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T15:15:00",
+    "window_start": "2026-08-09T15:15:00",
+    "window_end": "2026-08-09T15:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.9930994968785948,
+    "health_score": 52.02631881766125,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION",
+      "VOLUME_ANOMALY"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5000 (baseline: 0.8876, delta: -0.3876)",
+      "Overall failure rate: 0.5000 (baseline: 0.1124)",
+      "Average latency: 3162.7 ms (baseline: 2372.6 ms, ratio: 1.33x)",
+      "Transaction volume: 6 (baseline: 15.2, ratio: 0.40x)",
+      "Anomaly score: 0.993 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260809T154500_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T15:45:00",
+    "window_start": "2026-08-09T15:45:00",
+    "window_end": "2026-08-09T16:00:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 0.9613607893705125,
+    "health_score": 64.14665378436715,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5833 (baseline: 0.8876, delta: -0.3042)",
+      "Overall failure rate: 0.4167 (baseline: 0.1124)",
+      "Average latency: 4265.4 ms (baseline: 2372.6 ms, ratio: 1.80x)",
+      "Transaction volume: 12 (baseline: 15.2, ratio: 0.79x)",
+      "Anomaly score: 0.961 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260809T160000_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T16:00:00",
+    "window_start": "2026-08-09T16:00:00",
+    "window_end": "2026-08-09T16:30:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.9755984533370838,
+    "health_score": 52.466306514459745,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "CARD"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.3750 (baseline: 0.8752, delta: -0.5002)",
+      "Overall failure rate: 0.6250 (baseline: 0.1248)",
+      "Average latency: 2500.6 ms (baseline: 2445.7 ms, ratio: 1.02x)",
+      "Transaction volume: 8 (baseline: 14.4, ratio: 0.55x)",
+      "Anomaly score: 0.976 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260809T163000_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T16:30:00",
+    "window_start": "2026-08-09T16:30:00",
+    "window_end": "2026-08-09T16:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 1.0444108804802428,
+    "health_score": 41.910143561425414,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "CARD"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.3333 (baseline: 0.8752, delta: -0.5419)",
+      "Overall failure rate: 0.6667 (baseline: 0.1248)",
+      "Average latency: 6156.5 ms (baseline: 2445.7 ms, ratio: 2.52x)",
+      "Transaction volume: 9 (baseline: 14.4, ratio: 0.62x)",
+      "Anomaly score: 1.044 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260809T170000_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T17:00:00",
+    "window_start": "2026-08-09T17:00:00",
+    "window_end": "2026-08-09T17:30:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.8483886043376458,
+    "health_score": 74.01425857948358,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "CARD"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.4211 (baseline: 0.8672, delta: -0.4461)",
+      "Overall failure rate: 0.5789 (baseline: 0.1328)",
+      "Average latency: 2181.7 ms (baseline: 2241.3 ms, ratio: 0.97x)",
+      "Transaction volume: 19 (baseline: 13.7, ratio: 1.39x)",
+      "Anomaly score: 0.848 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260809T173000_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T17:30:00",
+    "window_start": "2026-08-09T17:30:00",
+    "window_end": "2026-08-09T18:30:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 1.053485011754034,
+    "health_score": 44.18410231859745,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "CARD"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.2727 (baseline: 0.8672, delta: -0.5944)",
+      "Overall failure rate: 0.7273 (baseline: 0.1328)",
+      "Average latency: 3746.8 ms (baseline: 2241.3 ms, ratio: 1.67x)",
+      "Transaction volume: 11 (baseline: 13.7, ratio: 0.80x)",
+      "Anomaly score: 1.053 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 4
+  },
+  {
+    "incident_id": "inc_20260809T183000_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T18:30:00",
+    "window_start": "2026-08-09T18:30:00",
+    "window_end": "2026-08-09T18:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.8077812450205225,
+    "health_score": 73.88273557622341,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5625 (baseline: 0.9156, delta: -0.3531)",
+      "Overall failure rate: 0.4375 (baseline: 0.0844)",
+      "Average latency: 2841.3 ms (baseline: 2157.0 ms, ratio: 1.32x)",
+      "Transaction volume: 16 (baseline: 16.2, ratio: 0.98x)",
+      "Anomaly score: 0.808 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260809T184500_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T18:45:00",
+    "window_start": "2026-08-09T18:45:00",
+    "window_end": "2026-08-09T19:15:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 1.0748483741562707,
+    "health_score": 36.12724354678516,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.3333 (baseline: 0.9156, delta: -0.5823)",
+      "Overall failure rate: 0.6667 (baseline: 0.0844)",
+      "Average latency: 4581.6 ms (baseline: 2157.0 ms, ratio: 2.12x)",
+      "Transaction volume: 9 (baseline: 16.2, ratio: 0.55x)",
+      "Anomaly score: 1.075 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260809T191500_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T19:15:00",
+    "window_start": "2026-08-09T19:15:00",
+    "window_end": "2026-08-09T20:00:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.9172068759841051,
+    "health_score": 40.65300341432086,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.0833 (baseline: 0.9029, delta: -0.8196)",
+      "Overall failure rate: 0.9167 (baseline: 0.0971)",
+      "Average latency: 3051.6 ms (baseline: 2454.9 ms, ratio: 1.24x)",
+      "Transaction volume: 12 (baseline: 13.2, ratio: 0.91x)",
+      "Anomaly score: 0.917 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 3
+  },
+  {
+    "incident_id": "inc_20260809T200000_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T20:00:00",
+    "window_start": "2026-08-09T20:00:00",
+    "window_end": "2026-08-09T20:45:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 0.9191470197715286,
+    "health_score": 53.49892103288144,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.3571 (baseline: 0.8876, delta: -0.5304)",
+      "Overall failure rate: 0.6429 (baseline: 0.1124)",
+      "Average latency: 3511.4 ms (baseline: 2264.9 ms, ratio: 1.55x)",
+      "Transaction volume: 14 (baseline: 12.8, ratio: 1.09x)",
+      "Anomaly score: 0.919 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 3
+  },
+  {
+    "incident_id": "inc_20260809T204500_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T20:45:00",
+    "window_start": "2026-08-09T20:45:00",
+    "window_end": "2026-08-09T21:00:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.9860956329796973,
+    "health_score": 66.57073540359649,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5833 (baseline: 0.8876, delta: -0.3043)",
+      "Overall failure rate: 0.4167 (baseline: 0.1124)",
+      "Average latency: 3323.9 ms (baseline: 2264.9 ms, ratio: 1.47x)",
+      "Transaction volume: 24 (baseline: 12.8, ratio: 1.87x)",
+      "Anomaly score: 0.986 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260809T211500_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T21:15:00",
+    "window_start": "2026-08-09T21:15:00",
+    "window_end": "2026-08-09T21:30:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 0.8640899682266291,
+    "health_score": 69.34709229262377,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5714 (baseline: 0.8929, delta: -0.3214)",
+      "Overall failure rate: 0.4286 (baseline: 0.1071)",
+      "Average latency: 4336.4 ms (baseline: 2508.5 ms, ratio: 1.73x)",
+      "Transaction volume: 14 (baseline: 13.6, ratio: 1.03x)",
+      "Anomaly score: 0.864 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 1
+  },
+  {
+    "incident_id": "inc_20260809T213000_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T21:30:00",
+    "window_start": "2026-08-09T21:30:00",
+    "window_end": "2026-08-09T22:00:00",
+    "severity": "CRITICAL",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.9581068423175898,
+    "health_score": 55.878750975518784,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "SBI"
+      },
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.3077 (baseline: 0.8929, delta: -0.5852)",
+      "Overall failure rate: 0.6923 (baseline: 0.1071)",
+      "Average latency: 3492.1 ms (baseline: 2508.5 ms, ratio: 1.39x)",
+      "Transaction volume: 13 (baseline: 13.6, ratio: 0.95x)",
+      "Anomaly score: 0.853 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK, SBI",
+      "Degradation spread across payment methods: CARD, NETBANKING, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260809T220000_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T22:00:00",
+    "window_start": "2026-08-09T22:00:00",
+    "window_end": "2026-08-09T22:30:00",
+    "severity": "WARNING",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 0.9766154990806885,
+    "health_score": 60.57899429481133,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.5882 (baseline: 0.8832, delta: -0.2950)",
+      "Overall failure rate: 0.4118 (baseline: 0.1168)",
+      "Average latency: 3953.5 ms (baseline: 2276.7 ms, ratio: 1.74x)",
+      "Transaction volume: 17 (baseline: 16.3, ratio: 1.04x)",
+      "Anomaly score: 0.977 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK",
+      "Degradation spread across payment methods: CARD, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260809T223000_MERCHANT_SYSTEM_DEGRADATION",
+    "detected_at": "2026-08-09T22:30:00",
+    "window_start": "2026-08-09T22:30:00",
+    "window_end": "2026-08-09T23:00:00",
+    "severity": "WARNING",
+    "incident_type": "MERCHANT_SYSTEM_DEGRADATION",
+    "anomaly_score": 0.7302651072794606,
+    "health_score": 75.05534562733921,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.6000 (baseline: 0.8832, delta: -0.2832)",
+      "Overall failure rate: 0.4000 (baseline: 0.1168)",
+      "Average latency: 3337.6 ms (baseline: 2276.7 ms, ratio: 1.47x)",
+      "Transaction volume: 15 (baseline: 16.3, ratio: 0.92x)",
+      "Anomaly score: 0.730 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK",
+      "Degradation spread across payment methods: CARD, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260809T230000_LATENCY_SPIKE",
+    "detected_at": "2026-08-09T23:00:00",
+    "window_start": "2026-08-09T23:00:00",
+    "window_end": "2026-08-10T00:00:00",
+    "severity": "CRITICAL",
+    "incident_type": "LATENCY_SPIKE",
+    "anomaly_score": 0.9688353222737176,
+    "health_score": 60.70275726116516,
+    "affected_dimensions": [
+      {
+        "bank": "AXIS"
+      },
+      {
+        "bank": "HDFC"
+      },
+      {
+        "bank": "ICICI"
+      },
+      {
+        "bank": "KOTAK"
+      },
+      {
+        "payment_method": "CARD"
+      },
+      {
+        "payment_method": "UPI"
+      },
+      {
+        "payment_method": "WALLET"
+      }
+    ],
+    "signals": [
+      "FAILURE_SURGE",
+      "LATENCY_SPIKE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.4444 (baseline: 0.8657, delta: -0.4212)",
+      "Overall failure rate: 0.5556 (baseline: 0.1343)",
+      "Average latency: 3724.8 ms (baseline: 2206.6 ms, ratio: 1.69x)",
+      "Transaction volume: 18 (baseline: 16.4, ratio: 1.10x)",
+      "Anomaly score: 0.939 (is_anomaly=True)",
+      "Degradation spread across banks: AXIS, HDFC, ICICI, KOTAK",
+      "Degradation spread across payment methods: CARD, UPI, WALLET"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 4
+  },
+  {
+    "incident_id": "inc_20260811T040000_BANK_RAIL_DEGRADATION",
+    "detected_at": "2026-08-11T04:00:00",
+    "window_start": "2026-08-11T04:00:00",
+    "window_end": "2026-08-11T04:30:00",
+    "severity": "WARNING",
+    "incident_type": "BANK_RAIL_DEGRADATION",
+    "anomaly_score": 0.39597400925171944,
+    "health_score": 90.4421396897724,
+    "affected_dimensions": [
+      {
+        "bank": "HDFC",
+        "payment_method": "UPI"
+      }
+    ],
+    "signals": [
+      "BANK_CONCENTRATION",
+      "LATENCY_SPIKE"
+    ],
+    "evidence": [
+      "Overall success rate: 0.9286 (baseline: 0.8592, delta: +0.0694)",
+      "Overall failure rate: 0.0714 (baseline: 0.1408)",
+      "Average latency: 3864.4 ms (baseline: 2189.9 ms, ratio: 1.76x)",
+      "Transaction volume: 14 (baseline: 14.4, ratio: 0.97x)",
+      "Anomaly score: 0.396 (is_anomaly=False)",
+      "Concentrated degradation detected in HDFC + UPI, while other banks/methods remained near baseline"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260812T083000_BANK_RAIL_DEGRADATION",
+    "detected_at": "2026-08-12T08:30:00",
+    "window_start": "2026-08-12T08:30:00",
+    "window_end": "2026-08-12T09:00:00",
+    "severity": "WARNING",
+    "incident_type": "BANK_RAIL_DEGRADATION",
+    "anomaly_score": 0.712845606103534,
+    "health_score": 74.94919991510406,
+    "affected_dimensions": [
+      {
+        "bank": "KOTAK",
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "BANK_CONCENTRATION",
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.6667 (baseline: 0.8936, delta: -0.2270)",
+      "Overall failure rate: 0.3333 (baseline: 0.1064)",
+      "Average latency: 2930.3 ms (baseline: 2283.3 ms, ratio: 1.28x)",
+      "Transaction volume: 12 (baseline: 13.8, ratio: 0.87x)",
+      "Anomaly score: 0.713 (is_anomaly=True)",
+      "Concentrated degradation detected in KOTAK + NETBANKING, while other banks/methods remained near baseline"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260812T191500_BANK_RAIL_DEGRADATION",
+    "detected_at": "2026-08-12T19:15:00",
+    "window_start": "2026-08-12T19:15:00",
+    "window_end": "2026-08-12T19:45:00",
+    "severity": "WARNING",
+    "incident_type": "BANK_RAIL_DEGRADATION",
+    "anomaly_score": 0.6947061524311164,
+    "health_score": 76.33998863547791,
+    "affected_dimensions": [
+      {
+        "bank": "ICICI",
+        "payment_method": "NETBANKING"
+      }
+    ],
+    "signals": [
+      "BANK_CONCENTRATION",
+      "FAILURE_SURGE",
+      "SUCCESS_RATE_DEGRADATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.7143 (baseline: 0.9029, delta: -0.1886)",
+      "Overall failure rate: 0.2857 (baseline: 0.0971)",
+      "Average latency: 3213.8 ms (baseline: 2454.9 ms, ratio: 1.31x)",
+      "Transaction volume: 7 (baseline: 13.2, ratio: 0.53x)",
+      "Anomaly score: 0.695 (is_anomaly=True)",
+      "Concentrated degradation detected in ICICI + NETBANKING, while other banks/methods remained near baseline"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  },
+  {
+    "incident_id": "inc_20260812T200000_REGIONAL_DEGRADATION",
+    "detected_at": "2026-08-12T20:00:00",
+    "window_start": "2026-08-12T20:00:00",
+    "window_end": "2026-08-12T20:30:00",
+    "severity": "INFO",
+    "incident_type": "REGIONAL_DEGRADATION",
+    "anomaly_score": 0.6256263212819081,
+    "health_score": 82.38330518556647,
+    "affected_dimensions": [
+      {
+        "region": "KA"
+      }
+    ],
+    "signals": [
+      "REGIONAL_CONCENTRATION"
+    ],
+    "evidence": [
+      "Overall success rate: 0.7000 (baseline: 0.8876, delta: -0.1876)",
+      "Overall failure rate: 0.3000 (baseline: 0.1124)",
+      "Average latency: 2304.1 ms (baseline: 2264.9 ms, ratio: 1.02x)",
+      "Transaction volume: 20 (baseline: 12.8, ratio: 1.56x)",
+      "Anomaly score: 0.623 (is_anomaly=True)",
+      "Region KA shows degradation across multiple banks/payment methods, while other regions remained near baseline"
+    ],
+    "status": "CONFIRMED",
+    "n_windows": 2
+  }
+]
