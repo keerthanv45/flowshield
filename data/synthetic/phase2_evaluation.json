@@ -2,112 +2,112 @@
   "full_dataset": {
     "label": "full dataset",
     "n_windows": 1344,
-    "classification_accuracy": 0.6376488095238095,
-    "detection_rate": 0.5208333333333334,
-    "false_positive_rate": 0.018055555555555554,
-    "precision": 0.9689922480620154,
-    "recall": 0.5208333333333334,
-    "f1": 0.6775067750677507,
+    "classification_accuracy": 0.5349702380952381,
+    "detection_rate": 0.5222222222222223,
+    "false_positive_rate": 0.022916666666666665,
+    "precision": 0.9947089947089947,
+    "recall": 0.5222222222222223,
+    "f1": 0.6848816029143898,
     "per_scenario": [
       {
         "scenario_type": "bank_rail_degradation",
-        "n_ground_truth_windows": 96,
-        "n_confirmed_any": 11,
-        "n_confirmed_correct_type": 9,
-        "detection_rate": 0.11458333333333333,
-        "correct_type_rate": 0.09375
+        "n_ground_truth_windows": 144,
+        "n_confirmed_any": 10,
+        "n_confirmed_correct_type": 3,
+        "detection_rate": 0.06944444444444445,
+        "correct_type_rate": 0.020833333333333332
       },
       {
         "scenario_type": "regional_degradation",
-        "n_ground_truth_windows": 144,
-        "n_confirmed_any": 11,
-        "n_confirmed_correct_type": 8,
-        "detection_rate": 0.0763888888888889,
-        "correct_type_rate": 0.05555555555555555
+        "n_ground_truth_windows": 216,
+        "n_confirmed_any": 30,
+        "n_confirmed_correct_type": 18,
+        "detection_rate": 0.1388888888888889,
+        "correct_type_rate": 0.08333333333333333
       },
       {
         "scenario_type": "latency_spike",
-        "n_ground_truth_windows": 96,
-        "n_confirmed_any": 96,
-        "n_confirmed_correct_type": 96,
+        "n_ground_truth_windows": 144,
+        "n_confirmed_any": 144,
+        "n_confirmed_correct_type": 136,
+        "detection_rate": 1.0,
+        "correct_type_rate": 0.9444444444444444
+      },
+      {
+        "scenario_type": "merchant_system_degradation",
+        "n_ground_truth_windows": 216,
+        "n_confirmed_any": 195,
+        "n_confirmed_correct_type": 79,
+        "detection_rate": 0.9027777777777778,
+        "correct_type_rate": 0.36574074074074076
+      },
+      {
+        "scenario_type": "isolated_failures",
+        "n_ground_truth_windows": 144,
+        "n_confirmed_any": 2,
+        "n_confirmed_correct_type": 0,
+        "detection_rate": 0.013888888888888888,
+        "correct_type_rate": 0.0
+      }
+    ],
+    "n_anomalous_windows": 436,
+    "n_anomalous_during_incident": 411,
+    "n_anomalous_during_normal": 25
+  },
+  "held_out": {
+    "label": "held-out (val+test)",
+    "n_windows": 404,
+    "classification_accuracy": 0.27722772277227725,
+    "detection_rate": 0.5375,
+    "false_positive_rate": 0.1,
+    "precision": 0.9847328244274809,
+    "recall": 0.5375,
+    "f1": 0.6954177897574124,
+    "per_scenario": [
+      {
+        "scenario_type": "bank_rail_degradation",
+        "n_ground_truth_windows": 48,
+        "n_confirmed_any": 6,
+        "n_confirmed_correct_type": 2,
+        "detection_rate": 0.125,
+        "correct_type_rate": 0.041666666666666664
+      },
+      {
+        "scenario_type": "regional_degradation",
+        "n_ground_truth_windows": 72,
+        "n_confirmed_any": 11,
+        "n_confirmed_correct_type": 7,
+        "detection_rate": 0.1527777777777778,
+        "correct_type_rate": 0.09722222222222222
+      },
+      {
+        "scenario_type": "latency_spike",
+        "n_ground_truth_windows": 48,
+        "n_confirmed_any": 48,
+        "n_confirmed_correct_type": 48,
         "detection_rate": 1.0,
         "correct_type_rate": 1.0
       },
       {
         "scenario_type": "merchant_system_degradation",
-        "n_ground_truth_windows": 144,
-        "n_confirmed_any": 134,
-        "n_confirmed_correct_type": 59,
-        "detection_rate": 0.9305555555555556,
-        "correct_type_rate": 0.4097222222222222
+        "n_ground_truth_windows": 72,
+        "n_confirmed_any": 64,
+        "n_confirmed_correct_type": 25,
+        "detection_rate": 0.8888888888888888,
+        "correct_type_rate": 0.3472222222222222
       },
       {
         "scenario_type": "isolated_failures",
         "n_ground_truth_windows": 144,
-        "n_confirmed_any": 4,
+        "n_confirmed_any": 2,
         "n_confirmed_correct_type": 0,
-        "detection_rate": 0.027777777777777776,
+        "detection_rate": 0.013888888888888888,
         "correct_type_rate": 0.0
       }
     ],
-    "n_anomalous_windows": 302,
-    "n_anomalous_during_incident": 268,
-    "n_anomalous_during_normal": 34
-  },
-  "held_out": {
-    "label": "held-out (val+test)",
-    "n_windows": 404,
-    "classification_accuracy": 0.594059405940594,
-    "detection_rate": 0.0,
-    "false_positive_rate": 0.015384615384615385,
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1": 0.0,
-    "per_scenario": [
-      {
-        "scenario_type": "bank_rail_degradation",
-        "n_ground_truth_windows": 0,
-        "n_confirmed_any": 0,
-        "n_confirmed_correct_type": 0,
-        "detection_rate": 0.0,
-        "correct_type_rate": 0.0
-      },
-      {
-        "scenario_type": "regional_degradation",
-        "n_ground_truth_windows": 0,
-        "n_confirmed_any": 0,
-        "n_confirmed_correct_type": 0,
-        "detection_rate": 0.0,
-        "correct_type_rate": 0.0
-      },
-      {
-        "scenario_type": "latency_spike",
-        "n_ground_truth_windows": 0,
-        "n_confirmed_any": 0,
-        "n_confirmed_correct_type": 0,
-        "detection_rate": 0.0,
-        "correct_type_rate": 0.0
-      },
-      {
-        "scenario_type": "merchant_system_degradation",
-        "n_ground_truth_windows": 0,
-        "n_confirmed_any": 0,
-        "n_confirmed_correct_type": 0,
-        "detection_rate": 0.0,
-        "correct_type_rate": 0.0
-      },
-      {
-        "scenario_type": "isolated_failures",
-        "n_ground_truth_windows": 144,
-        "n_confirmed_any": 4,
-        "n_confirmed_correct_type": 0,
-        "detection_rate": 0.027777777777777776,
-        "correct_type_rate": 0.0
-      }
-    ],
-    "n_anomalous_windows": 18,
-    "n_anomalous_during_incident": 7,
-    "n_anomalous_during_normal": 11
+    "n_anomalous_windows": 147,
+    "n_anomalous_during_incident": 145,
+    "n_anomalous_during_normal": 2
   },
   "note": "Baseline and anomaly detector were fit ONLY on the chronologically-first 70% of the dataset (train split), excluding windows overlapping any known incident. 'full_dataset' scores the fitted models against every window (train windows are in-sample for the models, though the detector/classifier itself never sees ground-truth labels). 'held_out' restricts evaluation to the validation+test period (chronologically after train), which is genuine out-of-sample performance."
 }

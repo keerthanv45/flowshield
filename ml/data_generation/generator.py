@@ -201,6 +201,67 @@ def default_incident_schedule(config: GenerationConfig) -> list[IncidentWindow]:
             isolated_failure_rate=0.03,
             description="Scattered, non-systemic failures (false-positive test)",
         ),
+        # --- Held-out-period representation ---------------------------
+        # The 70/15/15 chronological train/val/test split (see
+        # ml/evaluation/split.py, ml/health/pipeline.py) puts the cutoff
+        # between train and val/test at ~day 9.8. Without any incident
+        # after that point, held-out evaluation of systemic-scenario
+        # detection is vacuous (0/0 ground-truth windows). These four
+        # short, additive occurrences — one per systemic scenario type,
+        # smaller than their train-period counterparts — give the
+        # held-out period genuine systemic incidents to detect, without
+        # altering any window already scheduled above.
+        IncidentWindow(
+            scenario_type=ScenarioType.BANK_RAIL_DEGRADATION,
+            start=at(11.5),
+            end=at(12.0),
+            target_payment_method=PaymentMethod.UPI,
+            target_bank=Bank.HDFC,
+            success_rate_multiplier=0.35,
+            latency_multiplier=2.2,
+            failure_reason_weight_overrides={
+                FailureReason.TIMEOUT: 3.0,
+                FailureReason.NETWORK_ERROR: 2.5,
+            },
+            description="UPI + HDFC rail degradation (held-out occurrence)",
+        ),
+        IncidentWindow(
+            scenario_type=ScenarioType.REGIONAL_DEGRADATION,
+            start=at(12.0),
+            end=at(12.75),
+            target_region=Region.KA,
+            success_rate_multiplier=0.55,
+            latency_multiplier=1.6,
+            failure_reason_weight_overrides={
+                FailureReason.NETWORK_ERROR: 2.0,
+                FailureReason.BANK_DECLINED: 1.5,
+            },
+            description="KA regional degradation (held-out occurrence)",
+        ),
+        IncidentWindow(
+            scenario_type=ScenarioType.LATENCY_SPIKE,
+            start=at(12.75),
+            end=at(13.25),
+            success_rate_multiplier=0.70,
+            latency_multiplier=3.0,
+            failure_reason_weight_overrides={
+                FailureReason.TIMEOUT: 3.5,
+                FailureReason.NETWORK_ERROR: 2.0,
+            },
+            description="Global latency spike (held-out occurrence)",
+        ),
+        IncidentWindow(
+            scenario_type=ScenarioType.MERCHANT_SYSTEM_DEGRADATION,
+            start=at(13.25),
+            end=at(14.0),
+            success_rate_multiplier=0.60,
+            latency_multiplier=1.4,
+            failure_reason_weight_overrides={
+                FailureReason.TECHNICAL_ERROR: 2.5,
+                FailureReason.BANK_DECLINED: 1.3,
+            },
+            description="Merchant/system-wide degradation (held-out occurrence)",
+        ),
     ]
     return windows
 

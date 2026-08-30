@@ -272,12 +272,12 @@ Each component is bounded [0,100] by its own documented formula (ratio-to-baseli
 
 | Metric | Value |
 |---|---|
-| Classification accuracy (6-class) | 0.6376 |
-| Detection rate (recall, systemic) | 0.5208 |
-| False positive rate | 0.0181 |
-| Precision | 0.9690 |
-| Recall | 0.5208 |
-| F1 | 0.6775 |
+| Classification accuracy (6-class) | 0.5350 |
+| Detection rate (recall, systemic) | 0.5222 |
+| False positive rate | 0.0229 |
+| Precision | 0.9947 |
+| Recall | 0.5222 |
+| F1 | 0.6849 |
 
 **Per-scenario (full dataset):**
 
@@ -291,7 +291,7 @@ Each component is bounded [0,100] by its own documented formula (ratio-to-baseli
 
 Anomaly detector: 301 windows flagged `is_anomaly` (267 during a known incident, 34 during normal traffic).
 
-**Held-out (validation+test period, 404 windows, genuinely out-of-sample):** classification accuracy 0.6139; precision/recall/F1 are 0/0/0 — but this is **not a detector failure**: with the fixed 5-window incident schedule, all four systemic scenarios (bank-rail, regional, latency-spike, merchant) fall chronologically within the first 70% of the dataset, so the held-out period has **zero** ground-truth systemic-incident windows to detect (`n_ground_truth_windows=0` for all four in the per-scenario breakdown) — recall is mathematically 0/0, reported as 0 by convention. The held-out period's only ground truth is `isolated_failures`, where the detector correctly stayed mostly quiet (4/144 confirmed, none CRITICAL) — the desired behavior.
+**Held-out (validation+test period, 404 windows, genuinely out-of-sample):** classification accuracy 0.2772; precision 0.9847, recall 0.5375, F1 0.6954. The incident schedule (`ml/data_generation/generator.py`) now includes a second, smaller occurrence of each systemic scenario after the train/val/test cutoff (~day 9.8), additive to the original train-period occurrences — so held-out evaluation has genuine systemic ground truth (48-72 windows per scenario) instead of the vacuous 0/0 recall from the original schedule. Per-scenario held-out: bank_rail 12.5% detected, regional 15.3%, latency_spike 100%, merchant_system 88.9%, isolated_failures 1.4% confirmed (none CRITICAL — false-positive control intact).
 
 **Reading these numbers honestly:** precision is very high (0.99) — when the system confirms an incident, it's almost always right, and `isolated_failures` is correctly kept from flooding CRITICAL alerts (this was the core Phase 2 false-positive requirement). Recall is uneven: `latency_spike` (system-wide, overwhelming signal) and `merchant_system_degradation` (broad) are detected well; `bank_rail_degradation` and `regional_degradation` (concentrated in a small slice of the traffic) are detected much less often per-window, even though the *day* is correctly identified as having activity there (see `data/synthetic/phase2_report.png`) — persistence + concentration-window granularity mean many individual 15-minute windows within a correctly-identified incident day still don't individually cross the confirmation bar. See Known limitations.
 

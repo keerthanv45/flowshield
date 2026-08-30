@@ -66,6 +66,54 @@
       "latency_multiplier": 1.0,
       "isolated_failure_rate": 0.03,
       "description": "Scattered, non-systemic failures (false-positive test)"
+    },
+    {
+      "scenario_type": "bank_rail_degradation",
+      "start": "2026-08-12T12:00:00",
+      "end": "2026-08-13T00:00:00",
+      "target_payment_method": "UPI",
+      "target_bank": "HDFC",
+      "target_region": null,
+      "success_rate_multiplier": 0.35,
+      "latency_multiplier": 2.2,
+      "isolated_failure_rate": 0.0,
+      "description": "UPI + HDFC rail degradation (held-out occurrence)"
+    },
+    {
+      "scenario_type": "regional_degradation",
+      "start": "2026-08-13T00:00:00",
+      "end": "2026-08-13T18:00:00",
+      "target_payment_method": null,
+      "target_bank": null,
+      "target_region": "KA",
+      "success_rate_multiplier": 0.55,
+      "latency_multiplier": 1.6,
+      "isolated_failure_rate": 0.0,
+      "description": "KA regional degradation (held-out occurrence)"
+    },
+    {
+      "scenario_type": "latency_spike",
+      "start": "2026-08-13T18:00:00",
+      "end": "2026-08-14T06:00:00",
+      "target_payment_method": null,
+      "target_bank": null,
+      "target_region": null,
+      "success_rate_multiplier": 0.7,
+      "latency_multiplier": 3.0,
+      "isolated_failure_rate": 0.0,
+      "description": "Global latency spike (held-out occurrence)"
+    },
+    {
+      "scenario_type": "merchant_system_degradation",
+      "start": "2026-08-14T06:00:00",
+      "end": "2026-08-15T00:00:00",
+      "target_payment_method": null,
+      "target_bank": null,
+      "target_region": null,
+      "success_rate_multiplier": 0.6,
+      "latency_multiplier": 1.4,
+      "isolated_failure_rate": 0.0,
+      "description": "Merchant/system-wide degradation (held-out occurrence)"
     }
   ]
 }
