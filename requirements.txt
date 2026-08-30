@@ -15,3 +15,6 @@ matplotlib>=3.8,<4.0
 
 # Phase 3 — Nemotron reasoning layer (OpenAI-compatible NVIDIA NIM client)
 openai>=1.0,<2.0
+
+# Phase 5A — API test client (TestClient dependency)
+httpx2>=0.1,<1.0
