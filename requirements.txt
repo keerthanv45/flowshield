@@ -17,4 +17,4 @@ matplotlib>=3.8,<4.0
 openai>=1.0,<2.0
 
 # Phase 5A — API test client (TestClient dependency)
-httpx2>=0.1,<1.0
+httpx2>=2.0,<3.0
