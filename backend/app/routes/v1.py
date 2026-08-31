@@ -11,6 +11,7 @@ import os
 from fastapi import APIRouter, HTTPException, Query
 
 from backend.app.schemas.api import (
+    AuditTrailResponse,
     ConfigStatus,
     DashboardSummary,
     FlowShieldAnalysisResponse,
@@ -87,6 +88,18 @@ def simulate_incident(incident_id: str) -> FlowShieldAnalysisResponse:
         recovery_decision=decision,
         simulation=simulated,
     )
+
+
+@router.get("/incidents/{incident_id}/audit", response_model=AuditTrailResponse)
+def incident_audit_trail(incident_id: str) -> AuditTrailResponse:
+    """Structured audit trail across the 7 pipeline stages. Reuses the
+    full analyze+simulate pipeline; formats existing outputs only."""
+    orchestrator = get_orchestrator()
+    try:
+        events = orchestrator.audit_trail(incident_id)
+    except IncidentNotFoundError:
+        raise HTTPException(status_code=404, detail="Incident not found")
+    return AuditTrailResponse(incident_id=incident_id, events=events)
 
 
 @router.get("/config/status", response_model=ConfigStatus)

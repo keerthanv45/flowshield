@@ -344,3 +344,27 @@ Proves recovery works at scale: runs Phase 4's revenue-at-risk and simulator log
 **Dashboard:** compact "Batch Recovery Performance" panel (revenue at risk, expected recovery, simulated recovered revenue, recovery rate, transactions recovered, guardrail counts), clearly labeled SIMULATED.
 
 **Known limitation:** the ALTERNATE_PAYMENT_METHOD/auth-failure exclusion and insufficient-funds deferral are batch-level simplifications (see module docstring in `batch_evaluation.py`) — per-incident Phase 4 analysis still offers those as real candidates when a human is in the loop; this batch view only simulates what could plausibly run unattended.
+
+---
+
+# Phase 7 — Audit Trail + Demo Polish
+
+**Agent workflow:** `Detect → Reason → Quantify → Decide → Guardrails → Simulate → Outcome`
+
+Every confirmed incident's full pipeline run is now visible as a 7-stage audit trail, reusing Phases 2-4's own outputs — no new business logic:
+
+| Stage | Source (unchanged from earlier phases) |
+|---|---|
+| INCIDENT_DETECTED | Phase 2 `Incident` |
+| RCA_COMPLETED | Phase 3 `RCAResult` — Nemotron/mock reasoning |
+| REVENUE_RISK_CALCULATED | Phase 4 `RevenueRisk` |
+| RECOVERY_POLICY_EVALUATED | Phase 4 `RecoveryDecision` — deterministic policy, not AI |
+| GUARDRAILS_CHECKED | Phase 4 `RecoveryDecision.policy_notes` |
+| RECOVERY_SIMULATED | Phase 4 `SimulatedExecution` — **SIMULATED, no real payment executed** |
+| OUTCOME_RECORDED | Phase 4 `RecoveryOutcome` |
+
+Timestamps are `incident.detected_at + N seconds` (deterministic display ordering — this project has no real per-step wall-clock telemetry, documented in `backend/app/services/audit.py`).
+
+**Endpoint:** `GET /api/v1/incidents/{incident_id}/audit` (reuses `orchestrator.simulate()` + Phase 4's `build_outcome()`; formatting only).
+
+**Dashboard:** "Agent Activity — Audit Trail" panel, fetched automatically when you click Simulate Recovery, with a legend clarifying Nemotron = reasoning, Policy/Guardrails = deterministic rules, Simulation = SIMULATED.

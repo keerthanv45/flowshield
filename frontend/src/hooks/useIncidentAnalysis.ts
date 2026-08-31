@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { api, ApiError } from "../api/client";
-import type { FlowShieldAnalysisResponse } from "../api/types";
+import type { AuditEvent, FlowShieldAnalysisResponse } from "../api/types";
 
 interface UseIncidentAnalysisResult {
   result: FlowShieldAnalysisResponse | null;
@@ -8,6 +8,7 @@ interface UseIncidentAnalysisResult {
   error: string | null;
   simulating: boolean;
   simulateError: string | null;
+  auditEvents: AuditEvent[] | null;
   analyze: (incidentId: string) => Promise<void>;
   simulate: (incidentId: string) => Promise<void>;
   reset: () => void;
@@ -19,6 +20,7 @@ export function useIncidentAnalysis(): UseIncidentAnalysisResult {
   const [error, setError] = useState<string | null>(null);
   const [simulating, setSimulating] = useState(false);
   const [simulateError, setSimulateError] = useState<string | null>(null);
+  const [auditEvents, setAuditEvents] = useState<AuditEvent[] | null>(null);
 
   const analyze = useCallback(async (incidentId: string) => {
     setLoading(true);
@@ -41,6 +43,10 @@ export function useIncidentAnalysis(): UseIncidentAnalysisResult {
     try {
       const data = await api.simulateIncident(incidentId);
       setResult(data);
+      // Audit trail reuses the same analyze+simulate pipeline server-side;
+      // fetched alongside simulate so the trail reflects what just ran.
+      const audit = await api.getAuditTrail(incidentId);
+      setAuditEvents(audit.events);
     } catch (err) {
       setSimulateError(err instanceof ApiError ? err.message : "Simulation failed.");
     } finally {
@@ -52,7 +58,8 @@ export function useIncidentAnalysis(): UseIncidentAnalysisResult {
     setResult(null);
     setError(null);
     setSimulateError(null);
+    setAuditEvents(null);
   }, []);
 
-  return { result, loading, error, simulating, simulateError, analyze, simulate, reset };
+  return { result, loading, error, simulating, simulateError, auditEvents, analyze, simulate, reset };
 }

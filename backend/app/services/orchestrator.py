@@ -150,6 +150,17 @@ class FlowShieldOrchestrator:
         simulated = simulate_execution(decision, revenue_risk)
         return incident, rca, revenue_risk, decision, simulated
 
+    def audit_trail(self, incident_id: str) -> list:
+        """Reuses the full analyze+simulate pipeline (no new business
+        logic) and formats it into a structured audit trail. See
+        backend.app.services.audit for the formatting-only logic."""
+        from backend.app.services.audit import build_audit_trail
+        from backend.app.services.recovery.outcome import build_outcome
+
+        incident, rca, revenue_risk, decision, simulated = self.simulate(incident_id)
+        outcome = build_outcome(simulated, decision, revenue_risk)
+        return build_audit_trail(incident, rca, revenue_risk, decision, simulated, outcome)
+
     def summary(self) -> dict:
         report = self.analysis_report
         total_transactions = int(report.get("total_events", len(self.events_df)))

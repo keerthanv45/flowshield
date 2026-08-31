@@ -192,3 +192,40 @@ class TestRecoveryEvaluationEndpoint:
     def test_never_mentions_razorpay(self):
         r = client.get("/api/v1/recovery/evaluation")
         assert "razorpay" not in str(r.json()).lower()
+
+
+class TestAuditEndpoint:
+    def test_returns_seven_events(self):
+        incidents = client.get("/api/v1/incidents").json()
+        incident_id = incidents[0]["incident_id"]
+        r = client.get(f"/api/v1/incidents/{incident_id}/audit")
+        assert r.status_code == 200
+        body = r.json()
+        assert body["incident_id"] == incident_id
+        assert len(body["events"]) == 7
+
+    def test_event_order_sequential(self):
+        incidents = client.get("/api/v1/incidents").json()
+        incident_id = incidents[0]["incident_id"]
+        r = client.get(f"/api/v1/incidents/{incident_id}/audit")
+        orders = [e["order"] for e in r.json()["events"]]
+        assert orders == [1, 2, 3, 4, 5, 6, 7]
+
+    def test_unknown_incident_404(self):
+        r = client.get("/api/v1/incidents/does-not-exist/audit")
+        assert r.status_code == 404
+
+    def test_simulation_stage_marked_simulated(self):
+        incidents = client.get("/api/v1/incidents").json()
+        incident_id = incidents[0]["incident_id"]
+        r = client.get(f"/api/v1/incidents/{incident_id}/audit")
+        events = r.json()["events"]
+        assert "SIMULATED" in events[5]["status"]
+
+    def test_no_secret_leakage(self, monkeypatch):
+        secret = "sk-super-secret-nemotron-key-12345"
+        monkeypatch.setenv("NEMOTRON_API_KEY", secret)
+        incidents = client.get("/api/v1/incidents").json()
+        incident_id = incidents[0]["incident_id"]
+        r = client.get(f"/api/v1/incidents/{incident_id}/audit")
+        assert secret not in r.text

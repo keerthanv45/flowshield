@@ -159,3 +159,26 @@ export interface BatchEvaluationResult {
   seed: number;
   status: string;
 }
+
+export type AuditEventType =
+  | "INCIDENT_DETECTED"
+  | "RCA_COMPLETED"
+  | "REVENUE_RISK_CALCULATED"
+  | "RECOVERY_POLICY_EVALUATED"
+  | "GUARDRAILS_CHECKED"
+  | "RECOVERY_SIMULATED"
+  | "OUTCOME_RECORDED";
+
+export interface AuditEvent {
+  order: number;
+  event_type: AuditEventType;
+  timestamp: string;
+  message: string;
+  value: string | null;
+  status: string;
+}
+
+export interface AuditTrailResponse {
+  incident_id: string;
+  events: AuditEvent[];
+}

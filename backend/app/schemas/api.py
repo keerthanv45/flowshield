@@ -14,6 +14,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from backend.app.services.audit import AuditEvent
 from backend.app.services.reasoning.schemas import RCAResult
 from backend.app.services.recovery.schemas import RecoveryDecision, RevenueRisk, SimulatedExecution
 from ml.health.incidents import Incident, IncidentType, Severity
@@ -91,3 +92,10 @@ class ConfigStatus(BaseModel):
     provider: str
     model: str | None
     nemotron_configured: bool
+
+
+class AuditTrailResponse(BaseModel):
+    incident_id: str
+    events: list[AuditEvent]
+
+    model_config = ConfigDict(use_enum_values=False)

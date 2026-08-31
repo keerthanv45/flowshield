@@ -1,4 +1,5 @@
 import type {
+  AuditTrailResponse,
   BatchEvaluationResult,
   ConfigStatus,
   DashboardSummary,
@@ -81,4 +82,7 @@ export const api = {
 
   getRecoveryEvaluation: (): Promise<BatchEvaluationResult> =>
     request<BatchEvaluationResult>("/api/v1/recovery/evaluation"),
+
+  getAuditTrail: (incidentId: string): Promise<AuditTrailResponse> =>
+    request<AuditTrailResponse>(`/api/v1/incidents/${encodeURIComponent(incidentId)}/audit`),
 };

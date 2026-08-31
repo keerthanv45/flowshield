@@ -7,6 +7,7 @@ import { AnalysisPanel } from "./components/AnalysisPanel";
 import { RecoveryPanel } from "./components/RecoveryPanel";
 import { SimulationPanel } from "./components/SimulationPanel";
 import { BatchRecoveryPanel } from "./components/BatchRecoveryPanel";
+import { AuditTrailPanel } from "./components/AuditTrailPanel";
 import { EmptyState } from "./components/StateViews";
 import { useSummary } from "./hooks/useSummary";
 import { useIncidents, pickDefaultIncident } from "./hooks/useIncidents";
@@ -22,6 +23,7 @@ function App() {
     error: analyzeError,
     simulating,
     simulateError,
+    auditEvents,
     analyze,
     simulate,
     reset,
@@ -101,6 +103,7 @@ function App() {
                 simulateError={simulateError}
                 disabled={!result}
               />
+              <AuditTrailPanel events={auditEvents} />
             </>
           )}
         </div>
