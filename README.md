@@ -316,3 +316,31 @@ Outputs: `data/synthetic/phase2_incidents.json` (confirmed incidents), `phase2_h
 ## Next phase
 
 **PHASE 3 — Nemotron reasoning layer + root-cause analysis + revenue-at-risk estimation**
+
+---
+
+# Phase 6 — Batch Recovery Evaluation
+
+Proves recovery works at scale: runs Phase 4's revenue-at-risk and simulator logic across **every failed transaction in the full 20,000-event synthetic dataset** (not scoped to a single incident), and reports one aggregate business-impact result.
+
+**How the batch is selected:** every row in `data/synthetic/events.csv` with `status == "failed"` — the entire dataset, not a subset of incidents. `total_transactions` in the report is the full 20,000.
+
+**How each failure reason is treated** (reuses Phase 4's existing guardrail sets from `candidates.py`/`policy.py` unchanged, just applied per failure-reason group instead of per single incident):
+- `timeout`, `network_error`, `technical_error` → automated RETRY/route, simulated (system-side, no customer action needed)
+- `authentication_failed` → **excluded** from this automated batch (Phase 4 assumption: requires customer action, so a batch job can't execute it)
+- `insufficient_funds` → **deferred** to WAIT_AND_MONITOR, never simulated as an attempt
+- `bank_declined`, `unknown` → **excluded**, never retried
+
+**Definitions — never presented as guaranteed real-world outcomes:**
+- *Revenue at risk*: actual gross amount of all failed transactions (fact, from data).
+- *Expected recovery*: probability-weighted estimate using Phase 1's documented, illustrative `ASSUMED_RECOVERY_RATE` table (not measured real-world rates).
+- *Simulated recovered revenue*: one deterministic (seed=42) Monte Carlo draw against those same assumed rates — a simulation output, not a guarantee.
+- `recovery_rate` = recovered / attempted; `revenue_recovery_rate` = recovered amount / **total** revenue at risk (a stricter, whole-batch denominator).
+
+**Endpoint:** `GET /api/v1/recovery/evaluation` (reuses `orchestrator.batch_recovery_evaluation()` → `backend/app/services/recovery/batch_evaluation.py`; no duplicate logic in the route).
+
+**CLI:** `python scripts/evaluate_batch_recovery.py` — prints the same result as a report.
+
+**Dashboard:** compact "Batch Recovery Performance" panel (revenue at risk, expected recovery, simulated recovered revenue, recovery rate, transactions recovered, guardrail counts), clearly labeled SIMULATED.
+
+**Known limitation:** the ALTERNATE_PAYMENT_METHOD/auth-failure exclusion and insufficient-funds deferral are batch-level simplifications (see module docstring in `batch_evaluation.py`) — per-incident Phase 4 analysis still offers those as real candidates when a human is in the loop; this batch view only simulates what could plausibly run unattended.

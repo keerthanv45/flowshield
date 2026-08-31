@@ -165,3 +165,30 @@ class TestMalformedRequests:
         r = client.get("/api/v1/incidents", params={"limit": "bad"})
         assert "Traceback" not in r.text
         assert "File \"" not in r.text
+
+
+class TestRecoveryEvaluationEndpoint:
+    def test_returns_actual_batch_metrics(self):
+        r = client.get("/api/v1/recovery/evaluation")
+        assert r.status_code == 200
+        body = r.json()
+        assert body["total_transactions"] == 20000
+        assert body["failed_transactions"] > 0
+        assert body["revenue_at_risk"] > 0
+        assert body["status"].startswith("SIMULATED")
+
+    def test_guardrail_counts_present(self):
+        r = client.get("/api/v1/recovery/evaluation")
+        g = r.json()["guardrails"]
+        assert g["hard_declines_excluded_count"] >= 0
+        assert g["auth_failures_excluded_count"] >= 0
+        assert g["unsupported_failures_excluded_count"] >= 0
+
+    def test_deterministic_across_calls(self):
+        r1 = client.get("/api/v1/recovery/evaluation")
+        r2 = client.get("/api/v1/recovery/evaluation")
+        assert r1.json() == r2.json()
+
+    def test_never_mentions_razorpay(self):
+        r = client.get("/api/v1/recovery/evaluation")
+        assert "razorpay" not in str(r.json()).lower()

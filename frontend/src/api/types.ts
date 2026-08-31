@@ -127,3 +127,35 @@ export interface ConfigStatus {
   model: string | null;
   nemotron_configured: boolean;
 }
+
+export interface GuardrailSummary {
+  hard_declines_excluded_count: number;
+  hard_declines_excluded_amount: number;
+  auth_failures_excluded_count: number;
+  auth_failures_excluded_amount: number;
+  unsupported_failures_excluded_count: number;
+  unsupported_failures_excluded_amount: number;
+  insufficient_funds_deferred_count: number;
+  insufficient_funds_deferred_amount: number;
+  retry_routing_actions_selected_count: number;
+  retry_routing_actions_selected_amount: number;
+}
+
+export interface BatchEvaluationResult {
+  total_transactions: number;
+  failed_transactions: number;
+  gross_failed_amount: number;
+  revenue_at_risk: number;
+  recoverable_transactions: number;
+  recoverable_amount: number;
+  expected_recovery_amount: number;
+  actions_selected: number;
+  simulated_attempts: number;
+  simulated_recovered_transactions: number;
+  simulated_recovered_amount: number;
+  recovery_rate: number;
+  revenue_recovery_rate: number;
+  guardrails: GuardrailSummary;
+  seed: number;
+  status: string;
+}

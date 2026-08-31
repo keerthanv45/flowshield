@@ -100,6 +100,14 @@ class FlowShieldOrchestrator:
             return 0.0
         return float(snapshots.sort_values("window_start").iloc[-1]["health_score"])
 
+    def batch_recovery_evaluation(self):
+        """Phase 6: batch evaluation across the WHOLE dataset (not
+        incident-scoped). Reuses the cached events_df; not cached itself
+        since it's cheap (~tens of ms) and always reflects current data."""
+        from backend.app.services.recovery.batch_evaluation import run_batch_evaluation
+
+        return run_batch_evaluation(self.events_df)
+
     def list_incidents(
         self, severity: str | None = None, incident_type: str | None = None
     ) -> list[Incident]:

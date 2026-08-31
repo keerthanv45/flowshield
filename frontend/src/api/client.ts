@@ -1,4 +1,5 @@
 import type {
+  BatchEvaluationResult,
   ConfigStatus,
   DashboardSummary,
   FlowShieldAnalysisResponse,
@@ -77,4 +78,7 @@ export const api = {
     ),
 
   getConfigStatus: (): Promise<ConfigStatus> => request<ConfigStatus>("/api/v1/config/status"),
+
+  getRecoveryEvaluation: (): Promise<BatchEvaluationResult> =>
+    request<BatchEvaluationResult>("/api/v1/recovery/evaluation"),
 };

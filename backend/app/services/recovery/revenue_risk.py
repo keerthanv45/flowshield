@@ -73,12 +73,14 @@ def _scope_mask(events_df: pd.DataFrame, incident: Incident) -> pd.Series:
     return mask & dim_mask
 
 
-def calculate_revenue_risk(incident: Incident, events_df: pd.DataFrame) -> RevenueRisk:
-    """Compute RevenueRisk for one confirmed incident from ACTUAL
-    synthetic events (no invented values)."""
-    scoped = events_df.loc[_scope_mask(events_df, incident)]
-    failed = scoped.loc[scoped["status"] == "failed"]
-
+def compute_revenue_risk_for_failed(scope_id: str, failed: pd.DataFrame) -> RevenueRisk:
+    """Shared computation: given a DataFrame already filtered to the
+    failed transactions in scope (any scope -- one incident, or an
+    entire dataset batch), build the RevenueRisk breakdown. `scope_id`
+    becomes `RevenueRisk.incident_id` (a scope label, not necessarily a
+    real incident -- e.g. Phase 6's batch evaluation uses a synthetic
+    scope id here since it isn't tied to one confirmed incident).
+    """
     transactions_at_risk = int(len(failed))
     gross_amount_at_risk = float(failed["amount"].sum())
 
@@ -103,7 +105,7 @@ def calculate_revenue_risk(incident: Incident, events_df: pd.DataFrame) -> Reven
             recoverable_amount += amount
 
     return RevenueRisk(
-        incident_id=incident.incident_id,
+        incident_id=scope_id,
         transactions_at_risk=transactions_at_risk,
         gross_amount_at_risk=gross_amount_at_risk,
         recoverable_transactions=recoverable_transactions,
@@ -111,3 +113,11 @@ def calculate_revenue_risk(incident: Incident, events_df: pd.DataFrame) -> Reven
         expected_recovered_amount=expected_recovered_amount,
         failure_breakdown=breakdown,
     )
+
+
+def calculate_revenue_risk(incident: Incident, events_df: pd.DataFrame) -> RevenueRisk:
+    """Compute RevenueRisk for one confirmed incident from ACTUAL
+    synthetic events (no invented values)."""
+    scoped = events_df.loc[_scope_mask(events_df, incident)]
+    failed = scoped.loc[scoped["status"] == "failed"]
+    return compute_revenue_risk_for_failed(incident.incident_id, failed)

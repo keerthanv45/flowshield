@@ -17,6 +17,7 @@ from backend.app.schemas.api import (
     IncidentResponse,
 )
 from backend.app.services.orchestrator import IncidentNotFoundError, get_orchestrator
+from backend.app.services.recovery.batch_evaluation import BatchEvaluationResult
 
 router = APIRouter(prefix="/api/v1")
 
@@ -97,3 +98,12 @@ def config_status() -> ConfigStatus:
         os.environ.get("NEMOTRON_API_KEY") and os.environ.get("NEMOTRON_MODEL") and os.environ.get("NEMOTRON_BASE_URL")
     )
     return ConfigStatus(provider=provider, model=model, nemotron_configured=nemotron_configured)
+
+
+@router.get("/recovery/evaluation", response_model=BatchEvaluationResult)
+def recovery_evaluation() -> BatchEvaluationResult:
+    """Phase 6: batch recovery evaluation across the whole synthetic
+    dataset. SIMULATED ONLY -- reuses backend.app.services.recovery.*
+    unchanged; no duplicate recovery logic lives in this route."""
+    orchestrator = get_orchestrator()
+    return orchestrator.batch_recovery_evaluation()

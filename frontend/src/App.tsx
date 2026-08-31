@@ -6,6 +6,7 @@ import { SelectedIncidentPanel } from "./components/SelectedIncidentPanel";
 import { AnalysisPanel } from "./components/AnalysisPanel";
 import { RecoveryPanel } from "./components/RecoveryPanel";
 import { SimulationPanel } from "./components/SimulationPanel";
+import { BatchRecoveryPanel } from "./components/BatchRecoveryPanel";
 import { EmptyState } from "./components/StateViews";
 import { useSummary } from "./hooks/useSummary";
 import { useIncidents, pickDefaultIncident } from "./hooks/useIncidents";
@@ -58,6 +59,10 @@ function App() {
 
       <div style={{ marginTop: 22 }}>
         <SummaryCards summary={summary} loading={summaryLoading} error={summaryError} />
+      </div>
+
+      <div style={{ marginTop: 20 }}>
+        <BatchRecoveryPanel />
       </div>
 
       <div className="app-grid">
