@@ -104,14 +104,67 @@ class FlowShieldOrchestrator:
             self._analysis_report = json.loads(path.read_text()) if path.exists() else {}
         return self._analysis_report
 
+    def _overall_success_rate(self) -> float:
+        """Prefer the precomputed Phase 1 analysis_report.json (the exact
+        figure `scripts/run_analysis.py` reports). Falls back to computing
+        the same statistic directly from the already-loaded events_df when
+        that file isn't present in a given deployment (e.g. it's
+        gitignored and the deploy step never ran run_analysis.py) --
+        `success_rate` is just `successful_count / total`, the same
+        definition Phase 1 already uses, not new business logic."""
+        report_value = self.analysis_report.get("success_rate")
+        if report_value is not None:
+            return float(report_value)
+
+        df = self.events_df
+        if df.empty:
+            return 0.0
+        return float((df["status"] == "success").mean())
+
     def _latest_health_score(self) -> float:
+        """Prefer the precomputed Phase 2 phase2_health_snapshots.csv (the
+        exact score `scripts/evaluate_phase2.py` computed, baseline-aware).
+        Falls back to a cheap approximation using the already-loaded
+        events_df when that file isn't present in a given deployment:
+        aggregates the most recent 15-minute window with the EXISTING
+        `ml.health.aggregation.aggregate_time_windows`, builds a simple
+        whole-dataset-average baseline, and scores it with the EXISTING,
+        unmodified `ml.health.scoring.compute_health_score` -- reuses
+        Phase 2's own functions rather than inventing a new formula. This
+        is an approximation (a single global average, not the full
+        hour-of-day-aware baseline the precomputed snapshot used), so it
+        is only used when the real precomputed value is unavailable."""
         path = self._data_dir / "phase2_health_snapshots.csv"
-        if not path.exists():
+        if path.exists():
+            snapshots = pd.read_csv(path, parse_dates=["window_start"])
+            if not snapshots.empty:
+                return float(snapshots.sort_values("window_start").iloc[-1]["health_score"])
+
+        from ml.health.aggregation import aggregate_time_windows
+        from ml.health.scoring import compute_health_score
+
+        df = self.events_df
+        if df.empty:
             return 0.0
-        snapshots = pd.read_csv(path, parse_dates=["window_start"])
-        if snapshots.empty:
+
+        windows = aggregate_time_windows(df, window_minutes=15)
+        if windows.empty:
             return 0.0
-        return float(snapshots.sort_values("window_start").iloc[-1]["health_score"])
+
+        windows = windows.sort_values("window_start")
+        latest = windows.iloc[-1]
+        baseline_means = windows[
+            ["success_rate", "failure_rate", "average_latency_ms", "p95_latency_ms", "transaction_count"]
+        ].mean()
+
+        row = latest.to_dict()
+        row["baseline_success_rate"] = float(baseline_means["success_rate"])
+        row["baseline_failure_rate"] = float(baseline_means["failure_rate"])
+        row["baseline_average_latency_ms"] = float(baseline_means["average_latency_ms"])
+        row["baseline_p95_latency_ms"] = float(baseline_means["p95_latency_ms"])
+        row["baseline_transaction_count"] = float(baseline_means["transaction_count"])
+
+        return compute_health_score(row).score
 
     def batch_recovery_evaluation(self):
         """Phase 6: batch evaluation across the WHOLE dataset (not
@@ -209,7 +262,7 @@ class FlowShieldOrchestrator:
     def summary(self) -> dict:
         report = self.analysis_report
         total_transactions = int(report.get("total_events", len(self.events_df)))
-        overall_success_rate = float(report.get("success_rate", 0.0))
+        overall_success_rate = self._overall_success_rate()
 
         confirmed = self.incidents
         active = [i for i in confirmed if i.severity in (Severity.WARNING, Severity.CRITICAL)]
