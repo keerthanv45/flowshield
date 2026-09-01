@@ -28,10 +28,15 @@ app = FastAPI(
 )
 
 _cors_origins_env = os.environ.get("CORS_ALLOW_ORIGINS", "").strip()
+_default_cors_origins = [
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://flowshield-dashboard.onrender.com",
+]
 _cors_origins = (
     [o.strip() for o in _cors_origins_env.split(",") if o.strip()]
     if _cors_origins_env
-    else ["http://localhost:3000", "http://localhost:5173"]
+    else _default_cors_origins
 )
 app.add_middleware(
     CORSMiddleware,
