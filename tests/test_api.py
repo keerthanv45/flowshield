@@ -37,6 +37,77 @@ class TestSummary:
         r2 = client.get("/api/v1/summary")
         assert r1.json() == r2.json()
 
+    def test_summary_never_invokes_reasoning_provider(self, monkeypatch):
+        # Reproduces the production timeout scenario: REASONING_PROVIDER
+        # set to nemotron with (fake but well-formed) credentials. If
+        # summary() invoked the real provider per incident, this would
+        # either hang/error (NemotronProvider.analyze_incident patched to
+        # raise below) or attempt 107 live network calls. Asserting 200
+        # with a fast response and zero calls to the patched method
+        # proves the aggregate path never reaches the configured provider.
+        import backend.app.services.orchestrator as orchestrator_module
+        from backend.app.services.reasoning.nemotron_provider import NemotronProvider
+
+        monkeypatch.setenv("REASONING_PROVIDER", "nemotron")
+        monkeypatch.setenv("NEMOTRON_API_KEY", "fake-key")
+        monkeypatch.setenv("NEMOTRON_MODEL", "nvidia/nemotron-3-ultra-550b-a55b")
+        monkeypatch.setenv("NEMOTRON_BASE_URL", "https://integrate.api.nvidia.com/v1")
+
+        call_count = {"n": 0}
+
+        def _explode(self, evidence):
+            call_count["n"] += 1
+            raise AssertionError("summary() must never call the configured reasoning provider")
+
+        monkeypatch.setattr(NemotronProvider, "analyze_incident", _explode)
+
+        # Fresh orchestrator instance so no cached results from earlier
+        # tests mask a real invocation.
+        orchestrator_module._orchestrator_instance = None
+        try:
+            r = client.get("/api/v1/summary")
+            assert r.status_code == 200
+            assert call_count["n"] == 0
+            body = r.json()
+            assert body["confirmed_incident_count"] > 0
+            assert "recommended_action_counts" in body
+        finally:
+            orchestrator_module._orchestrator_instance = None
+
+    def test_analyze_endpoint_still_uses_configured_provider(self, monkeypatch):
+        # Contrast case: POST /analyze for one incident SHOULD attempt
+        # the configured (nemotron) provider, unlike summary().
+        import backend.app.services.orchestrator as orchestrator_module
+        from backend.app.services.reasoning.nemotron_provider import NemotronProvider
+
+        monkeypatch.setenv("REASONING_PROVIDER", "nemotron")
+        monkeypatch.setenv("NEMOTRON_API_KEY", "fake-key")
+        monkeypatch.setenv("NEMOTRON_MODEL", "nvidia/nemotron-3-ultra-550b-a55b")
+        monkeypatch.setenv("NEMOTRON_BASE_URL", "https://integrate.api.nvidia.com/v1")
+
+        call_count = {"n": 0}
+
+        def _fake_call(self, evidence):
+            call_count["n"] += 1
+            from backend.app.services.reasoning.nemotron_provider import NemotronError
+            raise NemotronError("simulated failure")
+
+        monkeypatch.setattr(NemotronProvider, "analyze_incident", _fake_call)
+
+        # Fresh orchestrator instance so an earlier test's cached (mock-
+        # sourced) analysis for this same incident_id can't mask a real
+        # invocation here.
+        orchestrator_module._orchestrator_instance = None
+        try:
+            incidents = client.get("/api/v1/incidents", params={"limit": 1}).json()
+            incident_id = incidents[0]["incident_id"]
+            r = client.post(f"/api/v1/incidents/{incident_id}/analyze")
+            assert r.status_code == 200
+            assert call_count["n"] == 1
+            assert r.json()["rca"]["source"] == "fallback"
+        finally:
+            orchestrator_module._orchestrator_instance = None
+
 
 class TestIncidentList:
     def test_list_incidents_nonempty(self):

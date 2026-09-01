@@ -27,6 +27,7 @@ from pathlib import Path
 import pandas as pd
 
 from backend.app.services.reasoning.factory import get_reasoning_provider
+from backend.app.services.reasoning.mock_provider import MockReasoningProvider
 from backend.app.services.reasoning.schemas import IncidentEvidence, RCAResult
 from backend.app.services.recovery.candidates import generate_candidates
 from backend.app.services.recovery.policy import RecoveryPolicyEngine
@@ -35,6 +36,11 @@ from backend.app.services.recovery.schemas import RecoveryDecision, RevenueRisk,
 from backend.app.services.recovery.simulator import simulate_execution
 from ml.health.incidents import Incident, IncidentStatus, IncidentType, Severity
 
+# Resolve relative to the repository root (three levels up from this file:
+# backend/app/services/orchestrator.py -> backend/app/services -> backend/app
+# -> backend -> repo root), NOT the process working directory. A relative
+# Path("data/synthetic") broke in production (e.g. Render) where the
+# working directory at process start isn't guaranteed to be the repo root.
 REPO_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_DATA_DIR = REPO_ROOT / "data" / "synthetic"
 
@@ -68,7 +74,13 @@ class FlowShieldOrchestrator:
         self._events_df: pd.DataFrame | None = None
         self._analysis_report: dict | None = None
         self._analysis_cache: dict[str, tuple[RCAResult, RevenueRisk, RecoveryDecision]] = {}
+        self._summary_cache: dict[str, tuple[RevenueRisk, RecoveryDecision]] = {}
         self._policy_engine = RecoveryPolicyEngine()
+        # Used ONLY by summary()'s aggregate scoring -- never by
+        # analyze()/simulate()/audit_trail(), which always go through
+        # get_reasoning_provider() (respecting REASONING_PROVIDER). See
+        # summary()'s docstring for why.
+        self._summary_reasoning_provider = MockReasoningProvider()
 
     @property
     def incidents(self) -> list[Incident]:
@@ -162,6 +174,38 @@ class FlowShieldOrchestrator:
         outcome = build_outcome(simulated, decision, revenue_risk)
         return build_audit_trail(incident, rca, revenue_risk, decision, simulated, outcome)
 
+    def _summary_decision(self, incident: Incident) -> tuple[RevenueRisk, RecoveryDecision]:
+        """Revenue risk + recovery decision for the AGGREGATE dashboard
+        summary only. Deliberately uses MockReasoningProvider (fast,
+        deterministic, no network call) instead of get_reasoning_provider()
+        -- with REASONING_PROVIDER=nemotron, calling the real provider
+        once per confirmed incident (107 in the current dataset) here
+        would mean 107 live LLM requests on every /api/v1/summary call,
+        which is what caused production timeouts. revenue_risk and the
+        candidate generation are already fully deterministic (no
+        reasoning-provider involvement at all); only the RCA confidence
+        fed into the policy engine's guardrail is a stand-in here. This
+        means a given incident's `recommended_action` in the summary
+        aggregate can differ from what POST /analyze or /simulate return
+        for that same incident when a real Nemotron RCA yields a
+        different confidence -- those two endpoints are unaffected by
+        this method and always use the configured provider. Cached
+        separately from `_analysis_cache` so this never contaminates the
+        real-provider results used by analyze/simulate/audit_trail.
+        """
+        if incident.incident_id in self._summary_cache:
+            return self._summary_cache[incident.incident_id]
+
+        evidence = IncidentEvidence.from_incident(incident)
+        rca = self._summary_reasoning_provider.analyze_incident(evidence)
+        revenue_risk = calculate_revenue_risk(incident, self.events_df)
+        candidates = generate_candidates(incident, revenue_risk)
+        decision = self._policy_engine.decide(evidence, rca, revenue_risk, candidates)
+
+        result = (revenue_risk, decision)
+        self._summary_cache[incident.incident_id] = result
+        return result
+
     def summary(self) -> dict:
         report = self.analysis_report
         total_transactions = int(report.get("total_events", len(self.events_df)))
@@ -175,7 +219,7 @@ class FlowShieldOrchestrator:
         action_counts: dict[str, int] = {}
 
         for incident in confirmed:
-            _rca, revenue_risk, decision = self._run_analysis(incident)
+            revenue_risk, decision = self._summary_decision(incident)
             total_revenue_at_risk += revenue_risk.gross_amount_at_risk
             total_recoverable_revenue += revenue_risk.recoverable_amount
             action_counts[decision.recommended_action.value] = (
