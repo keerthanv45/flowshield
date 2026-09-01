@@ -35,7 +35,8 @@ from backend.app.services.recovery.schemas import RecoveryDecision, RevenueRisk,
 from backend.app.services.recovery.simulator import simulate_execution
 from ml.health.incidents import Incident, IncidentStatus, IncidentType, Severity
 
-DEFAULT_DATA_DIR = Path("data/synthetic")
+REPO_ROOT = Path(__file__).resolve().parents[3]
+DEFAULT_DATA_DIR = REPO_ROOT / "data" / "synthetic"
 
 
 def _incident_from_dict(d: dict) -> Incident:
